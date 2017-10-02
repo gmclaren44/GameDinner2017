@@ -1,0 +1,113 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+    <meta http-equiv="Content-Type" content="text/xml">
+    <meta charset='utf-8'>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="css/styleUploadFileForm.css" />
+    
+    <script language="javascript" type="text/javascript">
+<!--
+        function funcFileUpload()
+        {
+            document.getElementById("msgResult").innerHTML = "";
+            parent.funcLoadProgressDlg();
+            return true;
+        }
+
+        function funcStopFileUpload(success)
+        {
+            var logoPathName = document.getElementById('fileLogo').value;
+            var n = logoPathName.lastIndexOf("\\");
+            var logoFileName = logoPathName;
+            if (n < logoPathName.length)
+                logoFileName = logoPathName.substr(n+1, logoPathName.length);
+
+            // First send an email that the file was uploaded.
+            var strMsg = "svsefID=" + encodeURIComponent(parent.funcGetSVSEFID());
+                strMsg += "&lastname=" + encodeURIComponent(parent.funcGetSVSEFLastName());
+                strMsg += "&firstname=" + encodeURIComponent(parent.funcGetSVSEFFirstName());
+                strMsg += "&attachFileName=" + encodeURIComponent(parent.funcGetSVSEFID());
+                strMsg += "-" + encodeURIComponent(parent.funcGetSVSEFLastName()) + "-" + logoFileName;
+            var EMAIL_LOGO_ADD  = 3;
+            
+
+            var result = '';
+            if (success == true)
+            {
+                result = '<span class="msg">' + logoFileName + ' was uploaded successfully!<\/span><br/><br/>';
+                parent.sendEmail(strMsg, EMAIL_LOGO_ADD, parent.funcParseXMLSendEmail);
+                parent.funcSetLogoUploaded();
+            }
+            else
+                result = '<span class="emsg">There was an error during ' + logoFileName + ' upload!<\/span><br/><br/>';
+                
+            document.getElementById('fileLogo').value = null;
+            document.getElementById("msgResult").innerHTML = result;
+            parent.funcSetIFrameHeight("iFrameUploadFileForm"); 
+            parent.funcCloseProgressDlg();    
+            return true;   
+        }
+//-->
+    </script>   
+</head>
+
+<body>
+    <div id="bodyForm">
+    <form id="uploadFileForm" action="UploadFile.php" method="post" enctype="multipart/form-data" target="uploadFileTarget" onsubmit="funcFileUpload()">
+        <fieldset  id="uploadFileFields" class="entryFields" >
+            <section id="inputLogo">
+                <label>File:</label>
+                <input class="inputField" id="fileLogo" name="fileLogo" type="file" form="uploadFileForm" onchange="funcGetSVSEFID()"/>
+                <input type="text" id="svsefID" name="svsefID" hidden/>
+                <input type="text" id="svsefLastName" name="svsefLastName" hidden/>
+                <br/>
+                <input id="submitLogoBtn" class="styleBtn" type="submit" name="submitLogoBtn" value="Upload" form="uploadFileForm" />
+                <br/><br/>
+                <label id="msgResult"></label>
+            </section>
+        </fieldset>
+    </form>
+    <iframe id="uploadFileTarget" name="uploadFileTarget" src="UploadFileTarget.html" style="width:0;height:0;border:0px solid #fff;"></iframe>
+    </div>
+    <script language="javascript" type="text/javascript"> 
+        function funcGetSVSEFID()
+        {
+            document.getElementById("svsefID").value = parent.funcGetSVSEFID();
+            document.getElementById("svsefLastName").value = parent.funcGetSVSEFLastName();
+        }
+
+        function funcEnableBtn(btnToSet, bSet)
+        {
+            if (bSet)
+            {
+                // Enable the Button (btnToSet)
+                document.getElementById(btnToSet).disabled = false;
+                document.getElementById(btnToSet).editable = true;
+                document.getElementById(btnToSet).style.backgroundColor = "#462300";
+                document.getElementById(btnToSet).style.borderColor = "#462300";
+                document.getElementById(btnToSet).style.color = "white";
+
+            }
+            else
+            {
+                // Disable the Update Donor Information Button
+                document.getElementById(btnToSet).disabled = true;
+                document.getElementById(btnToSet).editable = false;
+                document.getElementById(btnToSet).style.backgroundColor = "#DDDDD9";
+                document.getElementById(btnToSet).style.borderColor = "#DDDDD9";  
+                document.getElementById(btnToSet).style.color = "#534F4F";
+            }
+        }
+
+        function funcGetClientHeight()
+        {
+            var height = document.getElementById("bodyForm").clientHeight;
+            return(document.getElementById("bodyForm").clientHeight);
+        } 
+
+
+    </script>
+</body>
+</html>

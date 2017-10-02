@@ -1,0 +1,484 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+    <meta http-equiv="Content-Type" content="text/xml">
+    <meta charset='utf-8'>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SVSEF Game Dinner Donation</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <link rel="stylesheet" href="css/widgets/jquery-ui.css" >
+    <!--<link rel='shortcut icon' href='http://localhost/GameDinner2017/svsef-icon.png' type='image/png' />
+    <link rel='icon' href='http://localhost/GameDinner2017/svsef-icon.png' type='image/png' />-->
+    <script type="text/javascript" src="js/DPWeb.js"></script>
+    <script type="text/javascript" src="js/InKindDonation-DPGiftAccess.js"></script>
+    <script type="text/javascript" src="js/InKindDonation-FormEvents.js"></script>
+    <script type="text/javascript" src="js/Google-SendMsg.js"></script>
+    <!-- InKindDonation-ModalDlgs.js included at bottom -->
+    <script src="external/jquery/jquery.js"></script>
+    <script src="css/widgets/jquery-ui.js"></script>
+</head>
+<body onload="funcOnLoadDonationForm()" >
+    <header id="topOfPage" class="headerForm">
+        <figure class="headerImage">
+            <a href="https://svsef.org/" target="_blank"><img class="imgResponsive" src="images/GDLogoTransparent3.png" /></a>
+            <figcaption class="headerCaption">
+                <font id="fontHeader1" >Sun Valley Ski Education Foundation&#39;s</font><br/>
+                <font id="fontHeader2">41st Annual Wild West Game Dinner<br/>In-Kind Donation Form</font>
+            </figcaption>
+        </figure>  
+    </header>
+<!-- START OF PRINT FORM -->
+    <form id="printForm" hidden >   
+        <fieldset id="printConstituentFields">
+            <section class="secFormRow">
+                <label><b>&nbsp;&nbsp;SVSEF Donor Information</b></label>
+            </section>
+            <section class="secFormRow"> 
+                <section class="secPrintEntryField">
+                    <label>SVSEF ID:</label>
+                </section>
+                <section class="secPrintEntryField">
+                    <label>Phone:</label>
+                </section>
+            </section>
+            <section class="secFormRow"> 
+                <section class="secPrintEntryField">
+                    <label>Organization:</label>
+                </section>
+                <section class="secPrintEntryField">
+                    <label>Mobile:</label>
+                </section>
+            </section>
+            <section class="secFormRow"> 
+                <section class="secPrintEntryField">
+                    <label>Last Name:</label>
+                </section>
+                <section class="secPrintEntryField">
+                    <label>Email:</label>
+                </section>
+            </section>
+            <section class="secFormRow"> 
+                <section class="secPrintEntryField">
+                    <label>First Name:</label>
+                </section>
+                <section class="secPrintEntryField">
+                    <label>Website:</label>
+                </section>
+            </section>
+            <section class="secFormRow"> 
+                <section class="secPrintEntryField">
+                    <label>Mailing Address:</label>
+                </section>
+            </section>
+            <section class="secFormRow"> 
+                <section class="secPrintEntryField">
+                    <label>Mailing Address2:</label>
+                </section>
+            </section>
+            <section class="secFormRow"> 
+                <section class="secPrintEntryField">
+                    <label>City:</label>
+                </section>
+                <section class="secPrintEntryField">
+                    <label>State:</label>
+                </section>
+                <section class="secPrintEntryField">
+                    <label>Zip:</label>
+                </section>
+            </section>
+        </fieldset>
+        <fieldset id="printGiftFields">
+            <section>
+                <label><b>&nbsp;&nbsp;2017 Contribution Details</b></label>
+            </section>
+            <section class="secFormRow"> 
+                <section class="secFormColLeft3070">
+                    <label>Contribution Type: </label>
+                </section>
+                <section class="secFormColRight3070">       
+                    <input type="radio" size=30 name="svgftItemType" >Gift Certificate&nbsp;
+                    <input type="radio" size=30 name="svgftItemType" >Products&nbsp;
+                    <input type="radio" size=30 name="svgftItemType" >Services&nbsp;
+                    <input type="radio" size=30 name="svgftItemType" >Other&nbsp;
+                </section>
+            </section>
+            <section class="secFormRow"> 
+                <section class="secPrintEntryFieldLrg">
+                    <label>Description: </label>
+                </section>
+            </section>
+            <section class="secFormRow"> 
+                <section class="secPrintEntryFieldLrg">
+                    <label>Restrictions: </label>
+                </section>
+            </section>
+            <section class="secFormRow">
+                <section class="secPrintEntryField">
+                    <label>Value: </label>
+                </section>
+                <section class="secPrintEntryField">
+                    <label>Expiration Date: </label>
+                </section>
+            </section>
+            <section class="secFormRow">
+                <section class="secSingleCol">
+                    <label>Delivery: </label>
+                    <input type="radio" size=50 name="svgftDelivery" >Will Mail to SVSEF&nbsp;
+                    <input type="radio" size=50 name="svgftDelivery" >Issue a SVSEF Gift Certificate&nbsp;
+                    <input type="radio" size=50 name="svgftDelivery" >Arrange for Pick-up&nbsp;
+                </section>
+            </section>
+            <br/>
+            <section class="secFormRow">
+                <section class="secSingleCol">
+                    <label>SVSEF will advertise your donation on our event collateral!<br/>Please email a high resolution logo with transparent background and/or 300 dpi photos to jody@svsef.org</label>
+                </section>
+            </section>
+            <section class="secFormRow">
+                <section class="secFormColLeft3070">
+                    <label class="labelHiddenHolder">HIDDEN</label>
+                </section>
+                <section class="secFormColRight3070">
+                    <input type="radio" size=60 name="svgftLogo" />Yes, please include my logo on SVSEF collateral.&nbsp;I will submit by 9/8/2017.<br/>
+                    <input type="radio" size=60 name="svgftLogo" />No, I do not wish my logo to be featured on any collateral.<br/>
+                </section>
+            </section>
+            <br/>
+            <section class="secFormRow">
+                <section class="secPrintEntryFieldLrg">
+                    <label class="labelDescriptions">Specific contact (other than donor listed above):</label>
+                </section>
+            </section>
+            <section class="secFormRow">
+                <section class="secFormColLeft4060">
+                    <label>Please recognize donation as: </label>
+                </section>
+                <section class="secFormColRight4060">
+                    <input type="checkbox" size=50 name="svgftDelivery" >Donor Name Listed Above<br/>
+                    <section class="secPrintEntryField">
+                        <label>Other: </label>
+                    </section>
+                </section>
+            </section>
+        </fieldset>
+        <fieldset id="printSVSEFInfoFields">
+            <section class="secFormRow"> 
+                <section class="secFormColLeft6040">
+                    <label>Thank you for your donation!  Please submit form to:</label>
+                    <section class="secFormRow"> 
+                        <section class="secFormColLeft6040">
+                            <label><i>Mail:</i></label><br/>
+                            <label>SVSEF/Jody Zarkos</label><br/>
+                            <label>PO Box 203</label><br/>
+                            <label>Sun Valley, ID 83353</label><br/>
+                        </section>
+                        <section class="secFormColLeft6040">
+                            <label><i>Drop Off:</i></label><br/>
+                            <label>SVSEF Office</label><br/>
+                            <label>215 Picabo Street</label><br/>
+                            <label>Ketchum, ID 83340</label><br/>
+                        </section>
+                    </section>
+                </section>
+                <section class="secFormColLeft6040">
+                    <label>For questions or more information, please contact:</label><br/><br/>
+                    <label>Jody Zarkos</label><br/>
+                    <label>Director of Events & Community Relations</label><br/>
+                    <label>208-726-4129</label><br/>
+                    <label>jody@svsef.org</label><br/>
+                </section>
+            </section>
+        </fieldset>
+        <fieldset id="printTaxInfo">
+            <section class="secFormRow"> 
+                <section class="secSingleCol">
+                    <label>SVSEF is a 501(c)3 non-profit organization.  Tax ID #82-0264946</label>
+                </section>
+            </section>
+        </fieldset>
+        <section class="secFormRow"> 
+            <section class="secSingleCol">
+                <label>WE ARE SVSEF</label><br/>
+                <label>STRONG MINDS • STRONG BODIES • STRONG FUTURES</label>
+            </section>
+        </section>
+
+
+    </form>
+<!-- END OF PRINT FORM -->
+
+<!-- DEFINITION OF JQUERY WIDGETS -->
+<!-- Be sure each id is initialized in -->
+<!-- InKindDonation-ModalDlgs.js -->
+<div id="dialogGiftConfirmation" ></div>
+<div id="dialogResetGiftConfirmation" ></div>
+<div id="dialogAlertNoCallback" ></div>
+<div id="dialogNewSearchChk" ></div>
+<div id="dialogInProcess" ></div>
+
+<!-- START OF CONSTITUENT HTML DOCUMENT -->
+    <iframe id="iFrameConstituentForm" name="iFrameConstituentForm" src="ConstituentForm.html" style="margin:0; width:100%;border:none;overflow:hidden;" seamless scrolling="no" onload="funcOnLoadAdjustIFrame('iFrameConstituentForm')"></iframe>
+<!-- END OF CONSTITUENT HTML DOCUMENT -->
+    <br/>
+    <br/>
+<!-- START OF GIFT FORM -->
+    <form id="infoGiftForm">
+        <fieldset  id="infoGiftFields" class="entryFields fieldsOnLoad" >
+            <section class="secSingleCol">
+                <!--<img class="imgh4" src="images/high-res-logo-130.png" /><h4>&nbsp;&nbsp;2017 Contribution Details</h4>-->
+                <h4>2017 Contribution Details</h4>
+            </section>
+            <section class="secFormRow">
+                <section class="secFormColLeft4060">
+                    <label>Contribution Type<label class="redFont">*</label>: </label>
+                </section>
+                <section class="secFormColRight4060">       
+                    <input class="inputField" id="svgftItemType0" type="radio" pattern=".*" title="Gift Certificate" onblur="funcOnBlurRadioChecked(svgftItemType, true)" size=30 name="svgftItemType" value="G_IK_ITEMTYPE_GC" >Gift Certificate&nbsp;
+                    <input class="inputField" id="svgftItemType1" type="radio" pattern=".*" title="Products" onblur="funcOnBlurRadioChecked(svgftItemType, true)" size=30 name="svgftItemType" value="G_IK_ITEMTYPE_PRODUCTS" >Products&nbsp;
+                    <input class="inputField" id="svgftItemType2" type="radio" pattern=".*" title="Services" onblur="funcOnBlurRadioChecked(svgftItemType, true)" size=30 name="svgftItemType" value="G_IK_ITEMTYPE_SERVICES" >Services&nbsp;
+                    <input class="inputField" id="svgftItemType3" type="radio" pattern=".*" title="Other" onblur="funcOnBlurRadioChecked(svgftItemType, true)" size=30 name="svgftItemType" value="G_IK_ITEMTYPE_OTHER" >Other&nbsp;
+                    <br/>
+                    <label class="redFont" id="errorItemType" hidden>&nbsp;Please select the Contribution Type</label>
+                </section>
+            </section>
+            <section class="secFormRow">
+                <section class="secFormColLeft4060">
+                    <label>Description<label class="redFont">*</label>: </label>
+                </section>
+                <section class="secFormColRight4060">        
+                    <textarea class="inputField" id="svgftDescription" type="text" pattern=".*" title="Description of the 2017 Contribution" onblur="funcOnBlurCheckValidity(svgftDescription,false)" rows="3" cols="40" name="svgftDescription" ></textarea>
+                    <label class="redFont" id="errorDescription" hidden>&nbsp;Please enter a Description of the 2017 Contribution</label>
+                </section>
+            </section>
+            <section class="secFormRow">
+                <section class="secFormColLeft4060">
+                    <label>Restrictions: </label>
+                </section>
+                <section class="secFormColRight4060">        
+                    <textarea class="inputField" id="svgftRestrictions" type="text" pattern=".*" title="Restriction details, if applicable" onchange="" rows="3" cols="40" name="svgftRestrictions" ></textarea>
+                </section>
+            </section>
+            <section class="secFormRow">
+                <section class="secFormColLeft4060">
+                    <label>Value<label class="redFont">*</label>: </label>
+                </section>
+                <section class="secFormColRight4060">        
+                    <input class="inputField" id="svgftValue" type="text" pattern="\$?\d[0-9\.,]*" title="Value of the 2017 Contribution" onblur="funcOnBlurCheckValidity(svgftValue,false)" size=30 name="svgftValue" value="$" />
+                    <label class="redFont" id="errorValue" hidden>&nbsp;Please enter a Value for the 2017 Contribution</label>
+                </section>
+            </section>
+            <section class="secFormRow">
+                <section class="secFormColLeft4060">
+                    <label>Expiration Date: </label>
+                </section>
+                <section class="secFormColRight4060">        
+                    <input class="inputField" id="svgftExpirationDate" type="date" title="Expiration Date, if applicable" onchange="" size=30 name="svgftExpirationDate" />
+                </section>
+            </section>
+            <section class="secFormRow">
+                <section class="secFormColLeft4060">
+                    <label>Delivery<label class="redFont">*</label>: </label>
+                </section>
+                <section class="secFormColRight4060">
+                    <select class="inputField" id="svgftDelivery" onblur="funcOnBlurCheckValidity(svgftDelivery,false)" width=50 size=1 name="svgftDelivery">
+                        <optgroup label="Select Delivery" >
+                        <option value="" disabled="true" selected="selected" name="svgftDelivery"></option>
+                        <option value="G_IK_DELIVERY_MAILED" name="svgftDelivery">Will Mail to SVSEF</option>
+                        <option value="G_IK_DELIVERY_GC" name="svgftDelivery">Issue a SVSEF Gift Certificate</option>
+                        <option value="G_IK_DELIVERY_PU" name="svgftDelivery">Arrange for Pick-up</option>
+                        </optgroup>
+                    </select>
+                    <label class="redFont" id="errorDelivery" hidden>&nbsp;Please select how you wish your Contribution to be Delivered</label>
+                </section>
+            </section>
+            <br/>
+            <hr/>
+            <section class="secFormRow">
+                    <label class="labelDescriptions">SVSEF will advertise your donation on our event collateral!<br/>Please email a high resolution logo with transparent background and/or 300 dpi photos to jody@svsef.org.</label>
+            </section>
+            <br/>
+            <section class="secFormRow">
+                <section class="secFormColLeftx3">
+                    <label class="labelHiddenHolder">HIDDEN</label>
+                </section>
+                <section class="secFormColMidx3">
+                    <input class="inputField" id="svgftLogo0" type="radio" pattern=".*" title="Include my Logo" onclick="funcOnClickLogoRadio()" onblur="funcOnBlurRadioChecked(svgftLogo, true)" size=30 name="svgftLogo" value="YwUPLOAD" />
+                    <label for="svgftLogo0">Yes, please include my logo on SVSEF collateral.  I will upload now.</label>
+                </section>
+                <section class="secFormColRightx3">
+                    <label class="labelHiddenHolder">HIDDEN</label>
+                </section>
+            </section>
+            <section class="secFormRow">
+                <section class="secFormColLeftx3for20">
+                    <label class="labelHiddenHolder">HIDDEN</label>
+                </section>
+                <section class="secFormColMidx3for60">
+                    <iframe id="iFrameUploadFileForm" name="iFrameUploadFileForm" src="UploadFileForm.html" style="width:100%;border:0px solid #fff;" seamless scrolling="yes" onload="funcOnLoadAdjustIFrame('iFrameUploadFileForm')" hidden></iframe>
+                </section>
+                <section class="secFormColRightx3for20">
+                    <label class="labelHiddenHolder">HIDDEN</label>  
+                </section>
+            </section>
+            <section class="secFormRow">
+                <section class="secFormColLeftx3">
+                    <label class="labelHiddenHolder">HIDDEN</label>
+                </section>
+                <section class="secFormColMidx3">
+                    <input class="inputField" id="svgftLogo1" type="radio" pattern=".*" title="Include my Logo" onclick="funcOnClickLogoRadio()" onblur="funcOnBlurRadioChecked(svgftLogo, true)" size=30 name="svgftLogo" value="YwDELAY" />
+                    <label for="svgftLogo1">Yes, please include my logo on SVSEF collateral.  I will submit by 9/8/2017.</label>
+                </section>
+                <section class="secFormColRightx3">
+                    <label class="labelHiddenHolder">HIDDEN</label>
+                </section>
+            </section>
+            <section class="secFormRow">
+                <section class="secFormColLeftx3">
+                    <label class="labelHiddenHolder">HIDDEN</label>
+                </section>
+                <section class="secFormColMidx3">
+                    <input class="inputField" id="svgftLogo2" type="radio" pattern=".*" title="Do not include my Logo" onclick="funcOnClickLogoRadio()" onblur="funcOnBlurRadioChecked(svgftLogo, true)" size=30 name="svgftLogo" value="N" checked/>
+                    <label for="svgftLogo2">No, I do not wish my logo to be featured on any collateral.</label>
+                </section>
+                <section class="secFormColRightx3">
+                    <label class="labelHiddenHolder">HIDDEN</label>
+                </section>
+            </section>
+            <hr/>
+            <br/> 
+            <section class="secFormRow">
+                <label class="labelDescriptions">Specific contact (other than donor listed above), please list their name and contact info below:</label>
+            </section>
+            <section class="secFormRow">
+                <section class="secFormColLeft">
+                    <label>Contact: </label>
+                </section>
+                <section class="secFormColRight">        
+                    <textarea class="inputField" id="svgftContact" type="text" pattern=".*" title="Contact, if applicable" onchange="" rows="3" cols="30" name="svgftContact" ></textarea>
+                </section>
+            </section>
+            <br/>
+            <section class="secFormRow">
+                <section class="secFormColLeft">
+                    <label>Please recognize donation as: </label>
+                </section>
+                <section class="secFormColRight">
+                    <select class="inputField" id="svgftRecognizeOther" title="Recognize Donation from Donor or Other" onchange="funcOnChangeRecognize()" width=50 size=1 name="svgftRecognizeOther">
+                        <option id="optDonorName" value="N" name="svgftRecognizeOther">Donor Name Listed Above</option>
+                        <option value="Y" name="svgftRecognizeOther">Other</option>
+                    </select>
+                </section>
+            </section>
+            <section class="secFormRow">
+                <section class="secFormColLeft">
+                    <label id="lblRecognizeOther" hidden>Other Description: </label>
+                </section>
+                <section class="secFormColRight">        
+                    <input class="inputField" id="svgftOtherDesc" type="text" pattern=".*" title="Recognize Other Description" onchange="" size=30 name="svgftOtherDesc" hidden/>
+                </section>
+            </section>
+            <br/>
+            <section class="secFormRow">
+                <section class="secFormColLeft">
+                    <button class="styleBtnBig" id="btnUpdateGift" type="button" onclick="funcUpdateGift()"  >Add Contribution</button>
+                </section>
+                <section class="secFormColRight">
+                    <button class="styleBtnBig" id="btnResetGift" type="button" onclick="funcResetGift()"  >Reset</button>
+                </section>
+            </section>
+        </fieldset>
+    </form>
+<!-- END OF GIFT FORM -->
+    <br/>
+    <br/>
+<!-- START OF THANKS FORM -->
+    <form id="followUpForm">
+        <fieldset  id="msgThanks" class="msgTY fieldsOnLoad" >
+            <section class="secSingleCol">
+                <!--<img class="imgh4" src="images/high-res-logo-130.png" /><h4>&nbsp;&nbsp;Thank You!</h4>-->
+                <h4>Thank You!</h4>
+            </section>
+            <section class="secFormRow">
+                <label class="labelDescriptions">Thank you for your generous contribution in support of SVSEF:</label> 
+            </section>
+            <section class="secFormRow">
+                <label id="lblDonationDesc" class="labelDescriptions"></label> 
+            </section>
+            <br/>
+            <br/>
+            <section class="secFormRow">
+                <label id="lblSVSEF501c3" class="labelDescriptions">SVSEF is a 501(c)3 non-profit organization.  Tax ID #82-0264946</label> 
+            </section>
+            <br/>
+            <section class="secFormRow">
+                <label id="lblSendLogo" class="labelDescriptions">Please remember to send your logo to jody@svsef.org by 9/8/2017</label> 
+            </section>           
+            <hr/>
+             <section class="secFormRow">
+                <section class="secSingleCol">
+                    <button class="styleBtn" id="btnPrintThankYou" type="button" onclick="funcPrintThankYou()" >Print</button>
+                </section>
+             </section>
+            <section class="secFormRow">
+                <section class="secSingleCol">
+                    <button class="styleBtnLong" id="btnAddGift2" type="button" onclick="funcNewGift()" >Contribution</button>
+                    <label id="lblAddGift2" class="labelDescriptions">&nbsp;Please select 'Contribution', to enter another donation</label>
+                </section>
+            </section>
+            <section class="secFormRow">
+                <section class="secSingleCol">
+                    <label id="lblHiddenSpace" class="labelHiddenHolder">HIDDEN</label>
+                </section>
+            </section>
+            <section class="secFormRow">
+                <section class="secSingleCol">
+                    <label class="labelHiddenHolder">HIDDEN</label>
+                </section>
+            </section>
+            <section class="secFormRow">
+                <section class="secSingleCol">
+                    <label class="labelHiddenHolder">HIDDEN</label>
+                </section>
+            </section>
+            <section class="secFormRow">
+                <section class="secSingleCol">
+                    <label class="labelHiddenHolder">HIDDEN</label>
+                </section>
+            </section>
+        </fieldset>
+    </form>
+<!-- END OF THANKS FORM -->
+    <br/>
+    <br/>
+    <footer id="footerForm"> 
+        <fieldset class="footerFieldSet">
+            <section class="secFormRow">
+                <label class="labelDescriptions"><font size="5cm">STRONG MINDS • STRONG BODIES • STRONG FUTURES</font></label> 
+            </section>
+            <hr/>
+            <br/> 
+            <section class="secFormRow">
+                <label class="contactInfo">For questions or more information, please contact:</label>
+            </section>
+            <section class="secFormRow">
+                <label class="contactInfo">Jody Zarkos, Director of Events & Community Relations</label>
+            </section>
+            <section class="secFormRow">
+                <label class="contactInfo">(208) 726-4129 • jody@svsef.org</label>
+            </section>
+        </fieldset>
+    </footer>
+
+    <script type="text/javascript" src="js/InKindDonation-ModalDlgs.js"></script>
+    <script language="javascript" type="text/javascript">
+
+
+        window.addEventListener("resize", function(event){
+            funcSetIFrameHeight("iFrameConstituentForm");
+            funcSetIFrameWidth("iFrameConstituentForm");
+        });
+
+    </script>
+
+</body>
+</html>

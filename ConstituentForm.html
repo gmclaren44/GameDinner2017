@@ -1,0 +1,394 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+    <meta http-equiv="Content-Type" content="text/xml">
+    <meta charset='utf-8'>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SVSEF Constituent</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <link rel="stylesheet" href="css/widgets/jquery-ui.css" >
+    <!--<link rel='shortcut icon' href='http://localhost/GameDinner2017/svsef-icon.png' type='image/png' />
+    <link rel='icon' href='http://localhost/GameDinner2017/svsef-icon.png' type='image/png' />-->
+    <script type="text/javascript" src="js/DPWeb.js"></script>
+    <script type="text/javascript" src="js/Google-SendMsg.js"></script>
+    <script type="text/javascript" src="js/InKindDonation-DPConstituentAccess.js"></script>
+    <script type="text/javascript" src="js/Constituent.js"></script>
+    <!-- InKindDonation-ModalDlgs.js included at bottom -->
+    <!-- SUPPORT for jQuery Modal Dialogs -->
+    <script src="external/jquery/jquery.js"></script>
+    <script src="css/widgets/jquery-ui.js"></script>
+</head>
+<body>
+<!-- It is assumed that this will always be executed within an iFrame of another WebForm 
+    dependent on the Constituent's Demographic Data -->
+
+    <!-- DEFINITION OF JQUERY WIDGETS -->
+    <!-- Be sure each id is initialized in -->
+    <!-- InKindDonation-ModalDlgs.js -->
+    <div id="dialogLoseConstituentChgs" ></div>
+    <div id="dialogAlertNoCallback" ></div>
+    <div id="dialogNewSearchChk" ></div>
+    <div id="dialogConstituentConfirmation" ></div>
+    <div id="dialogInProcess" ></div>
+
+    <div id="bodyConstituentForm">
+    <!-- START OF SEARCH FORM -->
+    <form id="searchForm">
+        <fieldset id="searchFields" class="entryFields">
+            <section class="secFormRow">
+                <section class="secSingleCol">
+                    <!--<img class="imgh4" src="images/high-res-logo-130.png" /><h4>&nbsp;&nbsp;Search for SVSEF Donor</h4>-->
+                    <h4 id="titleSearch">Search for SVSEF Donor</h4>
+                </section>
+            </section>
+            <section class="secFormRow"> 
+                <label class="labelDescriptions">Please enter your SVSEF ID<br/>-or- your Organization Name<br/>-or- First and Last Name<br/>and select 'Search'</label>    
+            </section>
+            <br/>
+            <section class="secFormRow">
+                <section class="secFormColLeft">
+                    <label>SVSEF ID: </label>
+                </section>
+                <section class="secFormColRight">
+                    <input class="inputField" id="searchID" type="search" onchange="funcSetSearchBtns()" size=15 name="params" required="required" placeholder="SVSEF ID" />
+                </section>
+            </section>
+            <section class="secFormRow">
+                <section class="secFormColLeft">
+                    <label>Organization or Last Name: </label>
+                </section>
+                <section class="secFormColRight">
+                    <input class="inputField" id="searchLastName" type="search" onchange="funcSetSearchBtns()" size=30 name="svsefLastName" placeholder="Organization or Last Name" />
+                </section>
+            </section>
+            <section class="secFormRow">
+                <section class="secFormColLeft">
+                    <label>First Name: </label>
+                </section>
+                <section class="secFormColRight">
+                    <input class="inputField" id="searchFirstName" type="search" onchange="funcSetSearchBtns()" size=30 name="svsefFirstName" placeholder="First Name" />
+                </section>
+            </section>
+            <section class="secFormRow">
+                <section class="secSingleCol">
+                    <button class="styleBtn" type="button" onclick="funcSearchConstituent()">Search</button>
+                </section>
+            </section>
+            <br/>
+            <section class="secFormRow">
+                <section class="secSingleCol">
+                    <button class="styleBtn" id="btnNewConstituent" type="button" onclick="funcNewConstituent()" >New Donor</button>
+                </section>
+            </section>
+            <section class="secFormRow">
+                <section class="secSingleCol">
+                    <label id="lblNewConstituent" class="labelDescriptions">&nbsp;Please select 'New Donor', if you are a new SVSEF Donor</label>
+                </section>
+            </section>
+        </fieldset>
+    </form> 
+<!-- END OF SEARCH FORM -->
+    <br/>
+<!-- START OF MULTI-SEARCH FORM -->
+    <form id="multiSearchForm">
+        <fieldset id="multiSearchFields" class="entryFields fieldsOnLoad">
+            <section class="secSingleCol">
+                <!--<img class="imgh4" src="images/high-res-logo-130.png" /><h4>&nbsp;&nbsp;Multiple SVSEF Donor Matches</h4>-->
+                <h4>Multiple SVSEF Donor Matches</h4>
+            </section>
+             <br/>
+            <section class="secFormRow"> 
+                <label class="labelDescriptions">Please select the correct SVSEF Donor Match</label>    
+            </section>
+            <br/>
+            <section class="secFormRow">
+                <section class="secSingleCol">
+                    <ul class="searchList">
+                        <li class="liMultiSearch">
+                            <a id="searchListItem0" href="" onclick="funcMultiSearchSelected(0); return false;" hidden>searchListItem0</a>
+                        </li>
+                        <li class="liMultiSearch">
+                            <a id="searchListItem1" href="" onclick="funcMultiSearchSelected(1); return false;" hidden>searchListItem1</a>
+                        </li>
+                        <li class="liMultiSearch">
+                            <a id="searchListItem2" href="" onclick="funcMultiSearchSelected(2); return false;" hidden>searchListItem2</a>
+                        </li>
+                        <li class="liMultiSearch">
+                            <a id="searchListItem3" href="" onclick="funcMultiSearchSelected(3); return false;" hidden>searchListItem3</a>
+                        </li>
+                        <li class="liMultiSearch">
+                            <a id="searchListItem4" href="" onclick="funcMultiSearchSelected(4); return false;" hidden>searchListItem4</a>
+                        </li>
+                        <li class="liMultiSearch">
+                            <a id="searchListItem5" href="" onclick="funcMultiSearchSelected(5); return false;" hidden>searchListItem5</a>
+                        </li>
+                        <li class="liMultiSearch">
+                            <a id="searchListItem6" href="" onclick="funcMultiSearchSelected(6); return false;" hidden>searchListItem6</a>
+                        </li>
+                        <li class="liMultiSearch">
+                            <a id="searchListItem7" href="" onclick="funcMultiSearchSelected(7); return false;" hidden>searchListItem7</a>
+                        </li>
+                        <li class="liMultiSearch">
+                            <a id="searchListItem8" href="" onclick="funcMultiSearchSelected(8); return false;" hidden>searchListItem8</a>
+                        </li>
+                        <li class="liMultiSearch">
+                            <a id="searchListItem9" href="" onclick="funcMultiSearchSelected(9); return false;" hidden>searchListItem9</a>
+                        </li>
+                        <li class="liMultiSearch">
+                            <a id="searchListItem10" href="" onclick="funcMultiSearchSelected(10); return false;" hidden>searchListItem10</a>
+                        </li>
+                        <li class="liMultiSearch">
+                            <a id="searchListItem11" href="" onclick="funcMultiSearchSelected(11); return false;" hidden>searchListItem11</a>
+                        </li>
+                        <li class="liMultiSearch">
+                            <a id="searchListItem12" href="" onclick="funcMultiSearchSelected(12); return false;" hidden>searchListItem12</a>
+                        </li>
+                        <li class="liMultiSearch">
+                            <a id="searchListItem13" href="" onclick="funcMultiSearchSelected(13); return false;" hidden>searchListItem13</a>
+                        </li>
+                        <li class="liMultiSearch">
+                            <a id="searchListItem14" href="" onclick="funcMultiSearchSelected(14); return false;" hidden>searchListItem14</a>
+                        </li>
+                        <li class="liMultiSearch">
+                            <a id="searchListItem15" href="" onclick="funcMultiSearchSelected(15); return false;" hidden>searchListItem15</a>
+                        </li>
+                        <li class="liMultiSearch">
+                            <a id="searchListItem16" href="" onclick="funcMultiSearchSelected(16); return false;" hidden>searchListItem16</a>
+                        </li>
+                        <li class="liMultiSearch">
+                            <a id="searchListItem17" href="" onclick="funcMultiSearchSelected(17); return false;" hidden>searchListItem17</a>
+                        </li>
+                        <li class="liMultiSearch">
+                            <a id="searchListItem18" href="" onclick="funcMultiSearchSelected(18); return false;" hidden>searchListItem18</a>
+                        </li>
+                        <li class="liMultiSearch">
+                            <a id="searchListItem19" href="" onclick="funcMultiSearchSelected(19); return false;" hidden>searchListItem19</a>
+                        </li>
+                    </ul>
+                </section>
+            </section>
+            <section class="secFormRow">
+                <section class="secSingleCol">
+                    <button class="styleBtnBig" id="btnNewSearch2" type="button" onclick="funcNewSearch()" >New Search</button>
+                </section>
+            </section>
+        </fieldset>
+    </form>
+<!-- END OF MULTI-SEARCH FORM -->
+    <br/>
+<!-- START OF CONSTITUENT FORM -->
+    <form id="infoConstituentForm">
+        <fieldset  id="infoConstituentFields" class="entryFields fieldsOnLoad" >
+            <audio id="beep" src="sounds/beep.wav" autostart="false" ></audio>
+            <section class="secSingleCol">
+                <!--<img class="imgh4" src="images/high-res-logo-130.png" /><h4>&nbsp;&nbsp;SVSEF Donor Information</h4>-->
+                <h4 id="titleConstituent">SVSEF Donor Information</h4>
+            </section>
+            <section class="secFormRow">
+                <section class="secFormColLeft">
+                    <label>SVSEF ID: </label>
+                </section>
+                <section class="secFormColRight">
+                    <input class="inputField" id="svsefID" type="text" onchange="funcEnableConstituentBtns()" size=15 name="svsefID" required="required" disabled />
+                </section>
+            </section>
+            <section class="secFormRow">
+                <section class="secFormColLeft">
+                    <label class="labelHiddenHolder">HIDDEN</label>
+                </section>
+                <section class="secFormColRight">
+                    <input class="inputField" id="svsefOrg" type="checkbox" name="svsefOrg" onclick="funcOnClickOrganization()" value="Y" >&nbsp;&nbsp;<label>Organization</label>
+                </section>
+            </section>
+            <section class="secFormRow">
+                <section class="secFormColLeft">
+                    <label id="lblLastName">Last Name<label class="redFont">*</label>: </label>
+                </section>
+                <section class="secFormColRight">        
+                    <input class="inputField" id="svsefLastName" type="text" pattern=".*" title="Enter a Last Name" onblur="funcOnBlurCheckValidity(svsefLastName,false)" size=30 name="svsefLastName" />
+                    <label class="redFont" id="errorLastName" hidden>&nbsp;Please enter an Organization Name or Last Name</label>
+                </section>
+            </section>
+            <section class="secFormRow">
+                <section class="secFormColLeft">
+                    <label id="lblFirstName">First Name: </label>
+                </section>
+                <section class="secFormColRight">
+                    <input class="inputField" id="svsefFirstName" type="text" title="Enter a First Name" onchange="funcEnableConstituentBtns()" size=30 name="svsefFirstName" />
+                </section>
+            </section>
+            <section class="secFormRow">
+                <section class="secFormColLeft">
+                    <label>Mailing Address<label class="redFont">*</label>: </label>
+                </section>
+                <section class="secFormColRight">
+                    <input class="inputField" id="svsefMailingAddress" type="text" pattern=".*" title="Enter a valid Mailing Address" onblur="funcOnBlurCheckValidity(svsefMailingAddress,false)" size=30 name="svsefMailingAddress" />
+                    <label class="redFont" id="errorMailingAddress" hidden>&nbsp;Please enter a Mailing Address</label>
+                </section>
+            </section>
+            <section class="secFormRow">
+                <section class="secFormColLeft">
+                    <label>Mailing Address2: </label>
+                </section>
+                <section class="secFormColRight">
+                    <input class="inputField" id="svsefMailingAddress2" type="text" onchange="funcEnableConstituentBtns()" size=30 name="svsefMailingAddress2" />
+                </section>
+            </section>
+            <section class="secFormRow">
+                <section class="secFormColLeft">
+                    <label>City<label class="redFont">*</label>: </label>
+                </section>
+                <section class="secFormColRight">
+                    <input class="inputField" id="svsefCity" type="text" pattern=".*" title="Enter a valid City" onblur="funcOnBlurCheckValidity(svsefCity,false)" size=30 name="svsefCity" />
+                    <label class="redFont" id="errorCity" hidden>&nbsp;Please enter a City</label>
+                </section>
+            </section>
+            <section class="secFormRow">
+                <section class="secFormColLeft">
+                    <label>State<label class="redFont">*</label>: </label>
+                </section>
+                <section class="secFormColRight">
+                    <select class="inputField" id="svsefState" onblur="funcOnBlurCheckValidity(svsefState,false)" width=50 size=1 name="svsefState">
+                        <optgroup label="Select State" >
+                        <option value="" disabled="true" selected="selected" name="svsefState"></option>
+                        <option value="AL" name="svsefState">Alabama</option>
+                        <option value="AK" name="svsefState">Alaska</option>
+                        <option value="AZ" name="svsefState">Arizona</option>
+                        <option value="AR" name="svsefState">Arkansas</option>
+                        <option value="CA" name="svsefState">California</option>
+                        <option value="CO" name="svsefState">Colorado</option>
+                        <option value="CT" name="svsefState">Connecticut</option>
+                        <option value="DE" name="svsefState">Delaware</option>
+                        <option value="FL" name="svsefState">Florida</option>
+                        <option value="GA" name="svsefState">Georgia</option>
+                        <option value="HI" name="svsefState">Hawaii</option>
+                        <option value="ID" name="svsefState">Idaho</option>
+                        <option value="IL" name="svsefState">Illinois</option>
+                        <option value="IN" name="svsefState">Indiana</option>
+                        <option value="IA" name="svsefState">Iowa</option>
+                        <option value="KS" name="svsefState">Kansas</option>
+                        <option value="KY" name="svsefState">Kentucky</option>
+                        <option value="LA" name="svsefState">Louisiana</option>
+                        <option value="ME" name="svsefState">Maine</option>
+                        <option value="MD" name="svsefState">Maryland</option>
+                        <option value="MA" name="svsefState">Massachusetts</option>
+                        <option value="MI" name="svsefState">Michigan</option>
+                        <option value="MN" name="svsefState">Minnesota</option>
+                        <option value="MS" name="svsefState">Mississippi</option>
+                        <option value="MO" name="svsefState">Missouri</option>
+                        <option value="MT" name="svsefState">Montana</option>
+                        <option value="NE" name="svsefState">Nebraska</option>
+                        <option value="NV" name="svsefState">Nevada</option>
+                        <option value="NH" name="svsefState">New Hampshire</option>
+                        <option value="NJ" name="svsefState">New Jersey</option>
+                        <option value="NM" name="svsefState">New Mexico</option>
+                        <option value="NY" name="svsefState">New York</option>
+                        <option value="NC" name="svsefState">North Carolina</option>
+                        <option value="ND" name="svsefState">North Dakota</option>
+                        <option value="OH" name="svsefState">Ohio</option>
+                        <option value="OK" name="svsefState">Oklahoma</option>
+                        <option value="OR" name="svsefState">Oregon</option>
+                        <option value="PA" name="svsefState">Pennsylvania</option>
+                        <option value="RI" name="svsefState">Rhode Island</option>
+                        <option value="SC" name="svsefState">South Carolina</option>
+                        <option value="SD" name="svsefState">South Dakota</option>
+                        <option value="TN" name="svsefState">Tennessee</option>
+                        <option value="TX" name="svsefState">Texas</option>
+                        <option value="UT" name="svsefState">Utah</option>
+                        <option value="VT" name="svsefState">Vermont</option>
+                        <option value="VA" name="svsefState">Virginia</option>
+                        <option value="WA" name="svsefState">Washington</option>
+                        <option value="WV" name="svsefState">West Virginia</option>
+                        <option value="WI" name="svsefState">Wisconsin</option>
+                        <option value="WY" name="svsefState">Wyoming</option>
+                        </optgroup>
+                    </select>
+                    <label class="redFont" id="errorState" hidden>&nbsp;Please select a State</label>
+                </section>
+            </section>
+            <section class="secFormRow">
+                <section class="secFormColLeft">
+                    <label>Zip<label class="redFont">*</label>: </label>
+                </section>
+                <section class="secFormColRight">
+                    <input class="inputField" id="svsefZip" type="text" pattern="\d{5}(-\d{4})?" title="5 digit zip {- w/ optional 4 digits}" placeholder="_____-____" onblur="funcOnBlurCheckValidity(svsefZip,false)" size=30 name="svsefZip" />
+                    <label class="redFont" id="errorZip" hidden>&nbsp;Please enter a valid Zip Code</label>
+                </section>
+            </section>
+            <section class="secFormRow">
+                <section class="secFormColLeft">
+                    <label id="lblBusinessPhone">Phone<label class="redFont">*</label>: </label>
+                </section>
+                <section class="secFormColRight">
+                    <input class="inputField" id="svsefBusinessPhone" type="text" pattern="\d{3}-\d{3}-\d{4}?" title="Enter the number in this format: ###-###-####" placeholder="___-___-____" onkeyup="funcFillDashes(svsefBusinessPhone)" size=30 name="svsefBusinessPhone" />
+                    <label class="redFont" id="errorBusinessPhone" hidden>&nbsp;Please enter a valid Phone Number with Area Code (###-###-####)</label>
+                </section>
+            </section>
+            <section class="secFormRowHidden">
+                <section class="secFormColLeft">
+                    <label id="lblMobilePhone">Mobile<label class="redFont">*</label>: </label>
+                </section>
+                <section class="secFormColRight">
+                    <input class="inputField" id="svsefMobilePhone" type="text" pattern="\d{3}-\d{3}-\d{4}?" title="Enter the number in this format: ###-###-####" placeholder="___-___-____" onkeyup="funcFillDashes(svsefMobilePhone)" size=30 name="svsefMobilePhone" />
+                    <label class="redFont" id="errorMobilePhone" hidden>&nbsp;Please enter a valid Mobile Number with Area Code (###-###-####)</label>
+                </section>
+            </section>
+            <section class="secFormRow">
+                <section class="secFormColLeft">
+                    <label>Email<label class="redFont">*</label>: </label>
+                </section>
+                <section class="secFormColRight">
+                    <input class="inputField" id="svsefEmail" type="email" title="Enter a valid Email Address" onblur="funcOnBlurCheckValidity(svsefEmail,false)" size=30 name="svsefEmail" />
+                    <label class="redFont" id="errorEmail" hidden>&nbsp;Please enter a valid Email Address</label>
+                </section> 
+            </section>
+            <section class="secFormRow">
+                <section class="secFormColLeft">
+                    <label id="lblWebsite">Website: </label>
+                </section>
+                <section class="secFormColRight">
+                    <input class="inputField" id="svsefWebsite" type="text" title="Enter a valid Website" onchange="funcEnableConstituentBtns()" size=30 name="svsefWebsite" />
+                </section>
+            </section>
+            <section class="secFormRow">
+                <section class="secFormColLeft">
+                    <label class="labelHiddenHolder">HIDDEN</label>
+                </section>
+                <section class="secFormColRight">
+                    <table id="tblBtns">
+                        <tr>
+                            <td><button class="styleBtnBig" id="btnUpdateConstituent" type="button" onclick="funcUpdateConstituent()" >Update Donor</button></td>
+                            <td><button class="styleBtnBig" id="btnEnableChgConstituent" type="button" onclick="funcEnableChgConstituent()" >Donor Changes</button></td>
+                            <td><button class="styleBtnBig" id="btnNewSearch" type="button" onclick="funcNewSearchWCheck()" >New Search</button></td>
+                        </tr>
+                    </table>
+                </section>
+            </section>
+            <br/>
+            <section class="secFormRow">
+                <section class="secSingleCol">
+                    <button class="styleBtnLong" id="btnNextAction" type="button" onclick="funcNextAction()" hidden></button>
+                    <label id="lblNextAction" class="labelDescriptions"></label>
+                </section>
+            </section>
+
+        </fieldset> 
+    </form>
+<!-- END OF CONSTITUENT FORM -->
+    </div>
+
+    <script type="text/javascript" src="js/InKindDonation-ModalDlgs.js"></script>
+    <script language="javascript" type="text/javascript">
+
+        document.getElementById("svsefMobilePhone").addEventListener("blur", function() {
+            funcOnBlurCheckValidity(this, true/*!funcGetPhoneRequired("MOBILE")*/);
+        }); 
+
+        document.getElementById("svsefBusinessPhone").addEventListener("blur", function() {
+            funcOnBlurCheckValidity(this, false/*!funcGetPhoneRequired("BUSINESS")*/);
+        }); 
+
+    </script>
+
+</body>
+</html>

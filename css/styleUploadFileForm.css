@@ -1,0 +1,73 @@
+/*#imgProcessing {
+   z-index: 100;
+   position: absolute;
+   padding:0px 0px 0px 10px;
+   text-align: center;
+   /*display: none;*/
+   /*width:400px;
+   margin:0px;
+   background-color:#fff;
+   border:1px solid #ccc;
+}*/
+ 
+form#uploadFileForm {
+   text-align: center;
+   width: 390px;
+   height: 97%;
+   margin: 0px;
+   padding: 5px;
+   background-color: #462300;
+   border: 1px solid #462300;
+   color: white;
+}
+
+fieldset.entryFields {
+    font-family: "Franklin Gothic Medium","Franklin Gothic","ITC Franklin Gothic",Arial,sans-serif;
+    text-align: center;
+    border: thin;
+    box-shadow: -1px -1px 6px #888888;
+    color: #534F4F;
+}
+
+input.styleBtn {
+    border-color: #462300;
+    border-width: thin;
+    box-shadow: -1px -1px 6px #888888;
+    height: 30px;
+    font-family: "Franklin Gothic Medium","Franklin Gothic","ITC Franklin Gothic",Arial,sans-serif;
+    font-size: 12pt;
+    background-color: #462300;
+    color: white;
+    margin: 10px 0px 0px 0px; 
+}
+
+input#fileLogo {
+    width: 300px;
+    border-color: #FEF1B8;
+    border-width: thin;
+    box-shadow: -1px -1px 6px #888888;
+    font-family: "Franklin Gothic Medium","Franklin Gothic","ITC Franklin Gothic",Arial,sans-serif;
+    font-size: 12pt;
+    background-color: #FEF1B8;
+    color: #534F4F;
+    margin: 10px 0px 0px 0px; 
+}
+
+label#msgResult {
+    font-size: 12pt;
+    font-style: oblique;
+    padding: 20px 0px 0px 0px; 
+    color: #534F4F;
+}
+
+label#imgProcessing {
+    padding: 30px 0px 0px 0px; 
+}
+
+.inputField {
+    border-color: #909090;
+    box-shadow: -1px -1px 6px #888888;
+    border: thin;
+    text-align: left;
+    color: #534F4F;
+}

@@ -1,0 +1,768 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+    <!--<meta http-equiv="Content-Type" content="text/xml">-->
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SVSEF Game Dinner Registration</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <link rel="stylesheet" href="css/widgets/jquery-ui.css" >
+    <!--<link rel='shortcut icon' href='http://localhost/GameDinner2017/svsef-icon.png' type='image/png' />
+    <link rel='icon' href='http://localhost/GameDinner2017/svsef-icon.png' type='image/png' />-->
+    <script type="text/javascript" src="js/Registration.js"></script>
+    <script type="text/javascript" src="js/DPWeb.js"></script>
+    <script type="text/javascript" src="js/Registration-DPGiftAccess.js"></script>
+    <script type="text/javascript" src="js/Google-SendMsg.js"></script>
+    <!-- Registration-ModalDlgs.js included at bottom -->
+    <!-- SUPPORT for jQuery Modal Dialogs -->
+    <script src="external/jquery/jquery.js"></script>
+    <script src="css/widgets/jquery-ui.js"></script>
+</head>
+<body onload="funcOnLoadRegistrationForm()" >
+    <header id="topOfPage" class="headerForm">
+        <figure class="headerImage">
+            <a href="https://svsef.org/" target="_blank"><img class="imgResponsive" src="images/GDLogoTransparent3.png" /></a>
+            <figcaption class="headerCaption">
+                <font id="fontHeader1" >Sun Valley Ski Education Foundation&#39;s</font><br/>
+                <font id="fontHeader2">41st Annual Wild West Game Dinner<br/>Registration<br/><br/></font>
+                <font id="fontHeader2">Friday, November 17, 2017<br/>Limelight Room, Sun Valley Resort<br/></font>
+            </figcaption>
+        </figure>  
+    </header>
+<!-- START OF MENU FORM -->
+    <!--form id="menuForm"-->
+        <canvas id="menuCanvas" ></canvas>
+        <section class="secMenuRow">
+            <section class="secMenuColx4">
+                <a href="javascript:funcOnLoadMenuCanvas(0);" id="menuSelectTickets">Select<br>Tickets</a>
+            </section>
+            <section class="secMenuColx4">
+                <a href="javascript:funcOnLoadMenuCanvas(1);" id="menuFindSVSEFID">Find<br>SVSEF ID</a>
+            </section>
+            <section class="secMenuColx4">
+                <a href="javascript:funcOnLoadMenuCanvas(2);" id="menuPaymentInfo">Payment<br>Info</a>
+            </section>
+            <section class="secMenuColx4">
+                <a href="javascript:funcOnLoadMenuCanvas(3);" id="menuReviewSubmit">Review &<br>Submit</a>
+            </section>
+        </section>
+    <!--/form-->
+<!-- END OF MENU FORM -->   
+<!-- START OF REGISTRATION/TIX FORM -->
+    <form id="infoTixForm">
+        <fieldset  id="infoTixFields" class="entryFields fieldsOnLoad" >
+            <audio id="beep" src="sounds/beep.wav" autostart="false" ></audio>
+            <section class="secSingleCol">
+                <h4>2017 Wild West Game Dinner Registration</h4>
+            </section>
+            <section class="secSingleColHeadingLeft">
+                <label><b>RSVP</b></label>
+            </section>
+            <section class="secFormRow">          
+                <table class="tblReg">
+                    <tr>
+                        <td class="tdRegLabel"><label id="lblName">Name<label class="redFont">*</label></label></td>
+                    </tr>
+                    <tr>
+                        <td class="tdRegInput"><input class="inputField flexwidth tabable" id="regFirstName" type="text" pattern="*" title="First Name" onblur="funcOnBlurName(regFirstName,0)" onfocusout="funcOnFocusOut('regFirstName')" name="regFirstName" value=""  /></td>
+                        <td class="tdRegInput"><input class="inputField flexwidth tabable" id="regLastName" type="text" pattern="*" title="Last Name" onblur="funcOnBlurName(regLastName,1)" onfocusout="funcOnFocusOut('regLastName')" name="regLastName" value=""  /></td>
+                    </tr>
+                    <tr>
+                        <td class="tdRegSubLabel"><label>First</label></td>
+                        <td class="tdRegSubLabel"><label>Last</label></td>
+                    </tr>
+                </table>
+            </section>
+            <br/>
+            <section class="secFormRow">
+                <table class="tblReg">
+                    <tr>      
+                        <td class="tdRegLabel"><input class="inputField tabable" id="regRSVP0" type="radio" pattern=".*" title="Yes" onchange="funcOnChangeRSVP(regRSVP)" onfocusout="funcOnFocusOut('regRSVP')" size=30 name="regRSVP" value="REG_YES" checked="false" />&nbsp;Yes, I/we would love to come</td>
+                    </tr>
+                    <tr>
+                        <td class="tdRegLabel"><input class="inputField" id="regRSVP1" type="radio" pattern=".*" title="No" onchange="funcOnChangeRSVP(regRSVP)" onfocusout="funcOnFocusOut('regRSVP')" size=30 name="regRSVP" value="REG_NO" checked="false" />&nbsp;No, sorry I/we cannot make it, but we would like to support SVSEF</td>
+                    </tr>
+                    <tr>
+                        <td class="tdRegLabel labelHiddenHolder"><input class="inputField" id="regRSVP2" type="radio" pattern=".*" title="" onchange="funcOnChangeRSVP(regRSVP)" size=30 name="regRSVP" value="UNKNOWN" checked="checked" /></td>
+                    </tr>
+                </table>
+            </section>
+            <section class="secFormRowHidden" id="sectionDonationOnly">  
+                <br/>
+                <br/>  
+                <table class="tblReg">
+                    <tr>
+                        <td class="tdRegLabel"><label id="lblDonationAmount">Donation Amount</label></td>
+                    </tr>
+                    <tr>
+                        <!-- Section is hideable, therefore 'svregDonation' is 'tabhideable' too -->
+                        <td class="tdRegInput tdAlignLeft"><input class="inputField flexwidth50 tabable tabhideable" id="svregDonation" type="text" pattern="*" title="Donation Amount" onblur="funcOnBlurDonation(svregDonation)" onfocusout="funcOnFocusOut('svregDonation')" name="svregDonation" value=""  /></td>
+                    </tr>
+                    <tr>
+                        <td class="tdRegSubLabel"><label>Thank you! Please enter your desired gift amount and continue to the bottom of the form.</label></td>
+                    </tr>
+                </table>
+            </section>
+            <section class="secFormRowHidden" id="sectionTicketOptions">
+                <br/>
+                <hr/>
+                <br/>
+                <section class="secSingleColHeadingLeft">
+                    <label class="tdRegLabel"><b>Dinner Tickets</b></label>
+                </section>
+                <section class="secFormRow">
+                    <table class="tblReg">
+                        <tr>      
+                            <!-- Section is hideable, therefore 'svregDonation' is 'tabhideable' too -->
+                            <td class="tdRegLabel"><input class="inputField tabable tabhideable" id="optTicket0" type="radio" pattern=".*" title="Individual Tickets" onchange="funcOnChangeTicketOption(optTickets)"  onfocusout="funcOnFocusOut('optTickets')" size=30 name="optTickets" value="TICKETS_PURCHASE" checked="false">&nbsp;Purchase Individual Tickets</td>
+                        </tr>
+                        <tr>
+                            <td class="tdRegLabel"><input class="inputField" id="optTicket1" type="radio" pattern=".*" title="Sponsor a Table" onchange="funcOnChangeTicketOption(optTickets)" onfocusout="funcOnFocusOut('optTickets')" onkeydown="funcOnKeyDown()" size=30 name="optTickets" value="TICKETS_SPONSOR" checked="false">&nbsp;Sponsor a Table</td>
+                        </tr>
+                        <tr>
+                            <td class="tdRegLabel labelHiddenHolder"><input class="inputField" id="optTicket2" type="radio" pattern=".*" title="" onchange="funcOnChangeTicketOption(optTickets)" size=30 name="optTickets" value="UNKNOWN" checked="checked" /></td>
+                        </tr>
+                    </table>
+                </section>
+            </section>
+            <section class="secFormRowHidden" id="sectionEarlyBirdDinnerTickets"> 
+                <br/> 
+                <!--section class="secSingleColHeadingLeft">
+                    <label><b>Dinner Tickets</b></label>
+                </section--> 
+                <section class="secFormRow">  
+                    <table class="tblReg">
+                        <tr>
+                            <td class="tdRegLabel"><label id="lbltixEarly"></label></td>
+                        </tr>
+                        <tr>
+                            <!-- Section is hideable, therefore 'svtixEarly' is 'tabhideable' too -->
+                            <td class="tdRegLabel"><label> Price: <label id="pricetixEarly" class="redFont"></label>&nbsp;&nbsp;&nbsp;Quantity:&nbsp;&nbsp;</label><input class="inputField tixField tabable tabhideable" id="svtixEarly" type="text" pattern="[0-9]*" title="" onblur="funcOnBlurTicketsCheckValidity(svtixEarly)" onfocusout="funcOnFocusOut('svtixEarly')" size=1 name="svtixEarly" value="" /></td>
+                        </tr>
+                        <tr>
+                            <td class="tdRegSubLabel"><label id="taxlbltixEarly"></label></td>
+                        </tr>
+                    </table>
+                </section>
+             </section>
+             <section class="secFormRowHidden" id="sectionRegularDinnerTickets">  
+                <br/> 
+                <!--section class="secSingleColHeadingLeft">
+                    <label><b>Dinner Tickets</b></label>
+                </section--> 
+                <section class="secFormRow">  
+                    <table class="tblReg">
+                        <tr>
+                            <td class="tdRegLabel"><label id="lbltixRegular"></label></td>
+                        </tr>
+                        <tr>
+                            <!-- Section is hideable, therefore 'svtixRegular' is 'tabhideable' too -->
+                            <td class="tdRegLabel"><label> Price: <label id="pricetixRegular" class="redFont"></label>&nbsp;&nbsp;&nbsp;Quantity:&nbsp;&nbsp;</label><input class="inputField tixField tabable tabhideable" id="svtixRegular" type="text" pattern="[0-9]*" title="" onblur="funcOnBlurTicketsCheckValidity(svtixRegular)" onfocusout="funcOnFocusOut('svtixRegular')" size=1 name="svtixRegular" value="" /></td>
+                        </tr>
+                        <tr>
+                            <td class="tdRegSubLabel"><label id="taxlbltixRegular"></label></td>
+                        </tr>
+                    </table>
+                </section>
+            </section>
+            <section class="secFormRowHidden" id="sectionGuestList">
+                <br/>
+                <section class="secSingleColHeadingLeft">
+                    <label class="tdRegLabel">List people receiving a Dinner Ticket</label>
+                </section>
+                <section class="secFormRow">  
+                    <table id="tblGuests" class="tblGuestLists">
+                        <tr>
+                            <td class="tdGuestsLabel"><label>First&nbsp;Name</label></td>
+                            <td class="tdGuestsLabel"><label>Last&nbsp;Name</label></td>
+                            <td class="tdGuestsLabel"><label>Vegetarian&nbsp;Meal?</label></td>
+                            <td class="tdGuestsLabel"><label class="labelHiddenHolder">HIDDEN</label></td>
+                        </tr>
+                        <tr>
+                            <!-- Section is hideable, therefore all theses <input> fields are 'tabhideable' too -->
+                            <td class="tdRegInput"><input class="inputField flexwidth tabable tabhideable" id="guestFirstName0" type="text" pattern="*" title="First Name" onblur="funcOnBlurGuestFirstName(0)" onfocusout="funcOnFocusOut('guestFirstName0')" name="guestFirstName0" value=""  /></td>
+                            <td class="tdRegInput"><input class="inputField flexwidth tabable tabhideable" id="guestLastName0" type="text" pattern="*" title="Last Name" onblur="funcOnBlurGuestLastName(0)" onfocusout="funcOnFocusOut('guestLastName0')" name="guestLastName0" value=""  /></td>
+                            <td class="tdRegInput"><input class="inputField flexwidth tabable tabhideable" id="guestVegetarian0" type="text" pattern="*" title="Vegetarian Meal?" onblur="funcOnBlurGuestVegetarian(0)" onfocusout="funcOnFocusOut('guestVegetarian0')" name="guestVegetarian0" value=""  /></td>
+                            <td class="tdRegSubLabel flexwidth"><img id="imgAddGuest" class="imgGuest" src="images/list-add-gray-trans.png" onclick="funcOnClickAddGuestRow(0)" onmouseover="this.src='images/list-add-black-trans.png'" onmouseout="this.src='images/list-add-gray-trans.png'" title="Add another row"/>&nbsp;<img id="imgRemoveGuest" class="imgGuest" src="images/list-remove-gray-trans.png" onclick="funcOnClickRemoveGuestRow(0)" onmouseover="this.src='images/list-remove-black-trans.png'" onmouseout="this.src='images/list-remove-gray-trans.png'" title="Remove this row"/></td>
+                        </tr>
+                        <tr>
+                            <td class="tdRegSubLabel blueFont" colspan="4"><label>click + sign on the right to add more guests</label></td>
+                        </tr>
+                    </table>
+                </section>
+            </section>
+            <section class="secFormRowHidden" id="sectionSeatingOptions">
+                <br/>
+                <section class="secSingleColHeadingLeft">
+                    <label class="tdRegLabel">Seating Options</label>
+                </section>
+                <section class="secFormRow">
+                    <table class="tblReg">
+                        <tr>      
+                            <!-- Section is hideable, therefore 'optSeating0' is 'tabhideable' too -->
+                            <td class="tdRegLabel"><input class="inputField tabable tabhideable" id="optSeating0" type="radio" pattern=".*" title="Choose for us" onchange="funcOnChangeSeating(optSeating)" onfocusout="funcOnFocusOut('optSeating')" size=30 name="optSeating" value="SEATING_CHOOSE" checked="false">&nbsp;Please choose a table for us</td>
+                        </tr>
+                        <tr>
+                            <td class="tdRegLabel"><input class="inputField" id="optSeating1" type="radio" pattern=".*" title="Seat us with" onchange="funcOnChangeSeating(optSeating)" onfocusout="funcOnFocusOut('optSeating')" size=30 name="optSeating" value="SEATING_SEATWITH" checked="false">&nbsp;Please seat us with...</td>
+                        </tr>
+                        <tr>
+                            <td class="tdRegLabel labelHiddenHolder"><input class="inputField" id="optSeating3" type="radio" pattern=".*" title="" onchange="funcOnChangeSeating(optSeating)" size=30 name="optSeating" value="UNKNOWN" checked="checked" /></td>
+                        </tr>
+                    </table>
+                </section>
+            </section>
+            <section class="secFormRowHidden" id="sectionSeatWith">
+                <br/>
+                <section class="secSingleColHeadingLeft">
+                    <label>Add the name of the party you would like to be seated with</label>
+                </section>
+                <section class="secFormRow">
+                    <table class="tblReg">
+                        <tr>
+                            <!-- Section is hideable, therefore 'optSeatWith' is 'tabhideable' too -->
+                            <td class="tdRegInput tdAlignLeft"><input class="inputField flexwidth50 tabable tabhideable" id="optSeatWith" type="text" pattern="*" title="Seat us with" onblur="funcOnBlurSeatWith(optSeatWith)" onfocusout="funcOnFocusOut('optSeatWith')" name="optSeatWith" value=""  /></td>
+                        </tr>
+                    </table>
+                </section>
+            </section>
+            <section class="secFormRowHidden" id="sectionTableSponsorship">
+                <br/>
+                <section class="secSingleColHeadingLeft">
+                    <label class="tdRegLabel">Select Table Size to Sponsor</label>
+                </section>
+                <section class="secFormRow">
+                    <table class="tblReg">
+                        <tr>      
+                            <!-- Section is hideable, therefore 'tixSponsor8' is 'tabhideable' too -->
+                            <td class="tdRegLabel"><input class="inputField tabable tabhideable" id="tixSponsor8" type="radio" pattern=".*" title="Table of 8" onchange="funcOnChangeTableSponsorship(tixSponsor)" onfocusout="funcOnFocusOut('tixSponsor')" size=30 name="tixSponsor" value="CNT_TIXSPONSOR8" checked="false" />&nbsp;Table of 8 -&nbsp;<label id="pricetixSponsor8"></label></td>
+                        </tr>
+                        <tr>
+                            <td class="tdRegLabel"><input class="inputField" id="tixSponsor10" type="radio" pattern=".*" title="Table of 10" onchange="funcOnChangeTableSponsorship(tixSponsor)" onfocusout="funcOnFocusOut('tixSponsor')" size=30 name="tixSponsor" value="CNT_TIXSPONSOR10" checked="false" />&nbsp;Table of 10 -&nbsp;<label id="pricetixSponsor10"></label></td>
+                        </tr>
+                        <tr>
+                            <td class="tdRegLabel"><input class="inputField" id="tixSponsor12" type="radio" pattern=".*" title="Table of 12" onchange="funcOnChangeTableSponsorship(tixSponsor)" onfocusout="funcOnFocusOut('tixSponsor')" size=30 name="tixSponsor" value="CNT_TIXSPONSOR12" checked="false" />&nbsp;Table of 12 -&nbsp;<label id="pricetixSponsor12"></label></td>
+                        </tr>
+                        <tr>
+                            <td class="tdRegLabel"><input class="inputField" id="tixSponsor16" type="radio" pattern=".*" title="Table of 16" onchange="funcOnChangeTableSponsorship(tixSponsor)" onfocusout="funcOnFocusOut('tixSponsor')" size=30 name="tixSponsor" value="CNT_TIXSPONSOR16" checked="false" />&nbsp;Table of 16 -&nbsp;<label id="pricetixSponsor16"></label></td>
+                        </tr>
+                        <tr>
+                            <td class="tdRegLabel labelHiddenHolder"><input class="inputField" id="optSeating3" type="radio" pattern=".*" title="" onchange="funcOnChangeTableSponsorship(tixSponsor)" size=30 name="tixSponsor" value="UNKNOWN" checked="checked" /></td>
+                        </tr>
+                        <tr>
+                            <td class="tdRegSubLabel"><label>Includes sponsorship recognition and 10 raffle tickets.  Tax deductible donation amounts:<p/>Table of 8: $1,320; Table of 10: $1,650; Table of 12: $1,980; Table of 16: $2,640.</label></td>
+                        </tr>
+                    </table>
+                </section>
+            </section>
+            <section class="secFormRowHidden" id="sectionSponsorshipGuests">
+                <br/>
+                <section class="secSingleColHeadingLeft">
+                    <label class="tdRegLabel" id="lblSponsorshipGuests">Table of 8 Guests</label>
+                </section>
+                <section class="secFormRow">  
+                    <table id="tblSPGuests" class="tblGuestLists">
+                        <tr>
+                            <td class="tdGuestsLabel"><label>First&nbsp;Name</label></td>
+                            <td class="tdGuestsLabel"><label>Last&nbsp;Name</label></td>
+                            <td class="tdGuestsLabel"><label>Vegetarian&nbsp;Meal?</label></td>
+                            <td class="tdGuestsLabel"><label class="labelHiddenHolder">HIDDEN</label></td>
+                        </tr>
+                        <tr>
+                            <!-- Section is hideable, therefore the <input> fields are 'tabhideable' too -->
+                            <td class="tdRegInput"><input class="inputField flexwidth tabable tabhideable" id="spguestFirstName0" type="text" pattern="*" title="First Name" onblur="funcOnBlurGuestFirstName(0, 1)" onfocusout="funcOnFocusOut('spguestFirstName0')" name="spguestFirstName0" value=""  /></td>
+                            <td class="tdRegInput"><input class="inputField flexwidth tabable tabhideable" id="spguestLastName0" type="text" pattern="*" title="Last Name" onblur="funcOnBlurGuestLastName(0, 1)" onfocusout="funcOnFocusOut('spguestLastName0')" name="spguestLastName0" value=""  /></td>
+                            <td class="tdRegInput"><input class="inputField flexwidth tabable tabhideable" id="spguestVegetarian0" type="text" pattern="*" title="Vegetarian Meal?" onblur="funcOnBlurGuestVegetarian(0, 1)" onfocusout="funcOnFocusOut('spguestVegetarian0')" name="spguestVegetarian0" value=""  /></td>
+                            <td class="tdRegSubLabel flexwidth"><img id="imgAddGuest" class="imgGuest" src="images/list-add-gray-trans.png" onclick="funcOnClickAddGuestRow(0, 1)" onmouseover="this.src='images/list-add-black-trans.png'" onmouseout="this.src='images/list-add-gray-trans.png'" title="Add another row"/>&nbsp;<img id="imgRemoveGuest" class="imgGuest" src="images/list-remove-gray-trans.png" onclick="funcOnClickRemoveGuestRow(0, 1)" onmouseover="this.src='images/list-remove-black-trans.png'" onmouseout="this.src='images/list-remove-gray-trans.png'" title="Remove this row"/></td>
+                        </tr>
+                        <tr>
+                            <td class="tdRegSubLabel blueFont" colspan="4"><label>click + sign on the right to add more guests</label></td>
+                        </tr>
+                    </table>
+                </section>
+            </section>
+
+            <br/>
+            <hr/>
+            <br/>
+            <section class="secSingleColHeadingLeft">
+                <label><b>Coach Sponsorship</b></label>
+            </section>
+            <section class="secFormRow">          
+                <table class="tblReg">
+                    <tr>
+                        <td class="tdRegLabel"><label id="lbltixCoach"></label></td>
+                    </tr>
+                    <tr>
+                        <td class="tdRegLabel"><label> Price: <label id="pricetixCoach" class="redFont"></label>&nbsp;&nbsp;&nbsp;Quantity:&nbsp;&nbsp;</label><input class="inputField tixField tabable" id="svtixCoach" type="text" pattern="[0-9]*" title="" onblur="funcOnBlurTicketsCheckValidity(svtixCoach)" onfocusout="funcOnFocusOut('svtixCoach')" size=1 name="svtixCoach" value="" /></td>
+                    </tr>
+                    <tr>
+                        <td class="tdRegSubLabel">I/We would like to pay for a SVSEF coach to attend</td>
+                    </tr>
+                </table>
+            </section>
+            <br/>
+            <hr/>
+            <br/>
+            <section class="secSingleColHeadingLeft">
+                <label><b>Raffle</b></label>
+            </section>
+            <section class="secSingleColWMargins">
+                <label>Raffle: Yes! Enter me in the Raffle for a Sun Valley Season Ski Pass or Sun Valley Season Golf Pass</label>
+            </section>
+            <br/>
+            <section class="secFormRow">
+                <table class="tblReg">
+                    <tr>      
+                        <td class="tdRegLabel"><input class="inputField tabable" id="svregRaffle0" type="radio" pattern=".*" title="Single Raffle Ticket" onchange="funcOnChangeRaffle(regRaffle)" onfocusout="funcOnFocusOut('regRaffle')" size=30 name="regRaffle" value="RAFFLE_SINGLE" checked="false">&nbsp;One Ticket&nbsp;<label id="priceregRaffle0"></label></td>
+                    </tr>
+                    <tr>
+                        <td class="tdRegLabel"><input class="inputField" id="svregRaffle1" type="radio" pattern=".*" title="Group Raffle Tickets" onchange="funcOnChangeRaffle(regRaffle)" onfocusout="funcOnFocusOut('regRaffle')" size=30 name="regRaffle" value="RAFFLE_GROUP" checked="false">&nbsp;Six Tickets&nbsp;<label id="priceregRaffle1"></label></td>
+                    </tr>
+                    <tr>
+                        <td class="tdRegLabel labelHiddenHolder"><input class="inputField" id="svregRaffle2" type="radio" pattern=".*" title="" onchange="funcOnChangeRaffle(regRaffle)" size=30 name="regRaffle" value="UNKNOWN" checked="checked" /></td>
+                    </tr>
+                    <tr>
+                        <td class="tdRegSubLabel">Raffle drawing is November 17th - need not be present to win.</td>
+                    </tr>
+                </table>
+            </section>
+            <br/>
+            <hr/>
+            <br/>
+            <section class="secSingleColHeadingLeft">
+                <label><b>Total</b></label>
+            </section>
+            <section class="secFormRow">          
+                <table class="tblReg">
+                    <tr>
+                        <td class="tdRegLabel"><label>Total: <label id="lblTotal" class="greenFont">$0.00</label></label></td>
+                    </tr>
+                </table>
+            </section>
+            <br/>
+            <section class="secSingleColHeadingLeft">
+                <label id="lblWarning" class="tdRegSubLabel">Please RSVP with your Name and a Ticket Selection above to Continue.</label>
+            </section>
+            <section class="secSingleCol">
+                <button id="btnContinueReg" class="styleBtn" type="button" onclick="funcOnLoadMenuCanvas(1)">Continue</button>
+            </section>
+            
+        </fieldset>
+    </form>
+<!-- END OF REGISTRATION/TIX FORM -->
+
+<!-- DEFINITION OF JQUERY WIDGETS -->
+<!-- Be sure each id is initialized in -->
+<!-- Registration-ModalDlgs.js -->
+<div id="dialogAlertNoCallback" ></div>
+<div id="dialogInProcess" ></div>
+
+<!-- START OF CONSTITUENT HTML DOCUMENT -->
+    <iframe id="iFrameConstituentForm" name="iFrameConstituentForm" src="ConstituentForm.html" style="margin:0; width:100%;border:none;overflow:hidden;" seamless scrolling="no" onload="funcOnLoadAdjustIFrame('iFrameConstituentForm')"></iframe>
+<!-- END OF CONSTITUENT HTML DOCUMENT -->
+<!-- START OF PAYMENT INFO FORM -->
+    <form id="infoPaymentForm">
+        <fieldset  id="infoPaymentFields" class="entryFields fieldsOnLoad" >
+            <audio id="beep" src="sounds/beep.wav" autostart="false" ></audio>
+            <section class="secSingleCol">
+                <h4>2017 Game Dinner Payment Details</h4>
+            </section>
+            <section class="secSingleCol">
+                <img id="imgVisa" class="imgCC" src='images/visa2.jpg' onclick="funcOnClickSelectType('VISA')"/>
+                <img id="imgMC" class="imgCC" src='images/mc2.jpg' onclick="funcOnClickSelectType('MC')"/>
+                <img id="imgVisa" class="imgCC" src='images/amex2.jpg' onclick="funcOnClickSelectType('AMEX')"/>
+            </section>
+            <section class="secSingleCol">
+                <label>Please enter your CC details:</label>
+            </section>
+            <section class="secFormRow">
+                <section class="secFormColLeft4555">
+                    <label>CC Type: </label>
+                </section>
+                <section class="secFormColRight4555">        
+                    <select class="inputField" id="svPaymentType" onchange="funcOnChangeCCType()" width=50 size=1 name="svPaymentType">
+                        <optgroup label="Type" >
+                        <option value="" disabled="true" selected="selected" name="svPaymentType"></option>
+                        <option value="VISA" name="svPaymentType">Visa</option>
+                        <option value="MC" name="svPaymentType">Mastercard</option>
+                        <option value="AMEX" name="svPaymentType">Amex</option>
+                        </optgroup>
+                    </select>
+                    <label class="redFont" id="errorType" hidden>&nbsp;Please select the Credit Card Type</label>
+                </section>
+            </section>
+            <section class="secFormRow">
+                <section class="secFormColLeft4555">
+                    <label>CC Number: </label>
+                </section>
+                <section class="secFormColRight4555">        
+                    <input class="inputField" id="svPaymentCC" type="text" pattern="[0-9]{4}[-]{1}[0-9]{6}[-]{1}[0-9]{5}" title="Credit Card Number" onkeyup="funcFillDashes(svPaymentCC)" onblur="funcOnChangeCCNumber()" size=30 name="svPaymentCC" value="" />
+                    <label class="redFont" id="errorCC" hidden>&nbsp;Please enter the correct Credit Card Number</label>
+                </section>
+            </section>
+            <section class="secFormRow">
+                <section class="secFormColLeft4555">
+                    <label>Expiration: </label>
+                </section>
+                <section class="secFormColRight4555">        
+                    <select class="inputField" id="svPaymentExpMonth" onchange="funcOnChangeCCExp(0)" width=50 size=1 name="svPaymentExpMonth">
+                        <optgroup label="Month" >
+                        <option value="" disabled="true" selected="selected" name="svPaymentExpMonth"></option>
+                        <option value="00" name="svPaymentExpMonth">Jan</option>
+                        <option value="01" name="svPaymentExpMonth">Feb</option>
+                        <option value="02" name="svPaymentExpMonth">Mar</option>
+                        <option value="03" name="svPaymentExpMonth">Apr</option>
+                        <option value="04" name="svPaymentExpMonth">May</option>
+                        <option value="05" name="svPaymentExpMonth">Jun</option>
+                        <option value="06" name="svPaymentExpMonth">Jul</option>
+                        <option value="07" name="svPaymentExpMonth">Aug</option>
+                        <option value="08" name="svPaymentExpMonth">Sep</option>
+                        <option value="09" name="svPaymentExpMonth">Oct</option>
+                        <option value="10" name="svPaymentExpMonth">Nov</option>
+                        <option value="11" name="svPaymentExpMonth">Dec</option>
+                        </optgroup>
+                    </select>
+                    <label>/</label>
+                    <select class="inputField" id="svPaymentExpYear" onchange="funcOnChangeCCExp(1)" width=50 size=1 name="svPaymentExpYear">
+                        <optgroup label="Year" >
+                        <option value="" disabled="true" selected="selected" name="svPaymentExpYear"></option>
+                        <option value="2017" name="svPaymentExpYear">2017</option>
+                        <option value="2018" name="svPaymentExpYear">2018</option>
+                        <option value="2019" name="svPaymentExpYear">2019</option>
+                        <option value="2020" name="svPaymentExpYear">2020</option>
+                        <option value="2021" name="svPaymentExpYear">2021</option>
+                        <option value="2022" name="svPaymentExpYear">2022</option>
+                        <option value="2023" name="svPaymentExpYear">2023</option>
+                        <option value="2024" name="svPaymentExpYear">2024</option>
+                        <option value="2025" name="svPaymentExpYear">2025</option>
+                        <option value="2026" name="svPaymentExpYear">2026</option>
+                        <option value="2027" name="svPaymentExpYear">2027</option>
+                        <option value="2028" name="svPaymentExpYear">2028</option>
+                        <option value="2029" name="svPaymentExpYear">2029</option>
+                        <option value="2030" name="svPaymentExpYear">2030</option>
+                        <option value="2031" name="svPaymentExpYear">2031</option>
+                        <option value="2032" name="svPaymentExpYear">2032</option>
+                        <option value="2033" name="svPaymentExpYear">2033</option>
+                        <option value="2034" name="svPaymentExpYear">2034</option>
+                        <option value="2035" name="svPaymentExpYear">2035</option>
+                        <option value="2036" name="svPaymentExpYear">2036</option>
+                        <option value="2037" name="svPaymentExpYear">2037</option>
+                        <option value="2038" name="svPaymentExpYear">2038</option>
+                        </optgroup>
+                    </select>
+                    <label class="redFont" id="errorExp" hidden>&nbsp;Please enter the correct Credit Card Expiration</label>
+                </section>
+            </section>
+            <section class="secFormRow">
+                <section class="secFormColLeft4555">
+                    <label>CVV Code: </label>
+                </section>
+                <section class="secFormColRight4555">        
+                    <input class="inputField" id="svPaymentCVV" type="text" pattern="\d[0-9]*" title="CVV Code" onblur="funcOnChangeCVVNumber()" size=8 name="svPaymentCVV" value="" />
+                    <label class="redFont" id="errorCVV" hidden>&nbsp;Please enter the correct CVV Code</label>
+                    &nbsp;<button class="styleBtnHelp" type="button" onclick="funcCVVCodeExplanation()">What's CVV?</button>
+                </section>
+            </section>
+            <br/>
+            <section class="secFormRow">
+                <section class="secFormColLeft4555">
+                    <input class="inputField" id="svSendCheck" type="checkbox" title="Please select if you will be sending a check to SVSEF" onchange="funcOnChangeSendCheck()" name="" value="" />
+                </section>
+                <section class="secFormColRight4555">  
+                    <label>I will send a check to SVSEF</label> 
+                </section>
+            </section>
+            <br/>
+            <hr/>
+            <br/>
+            <section class="secSingleCol">
+                <h4>Billing Address</h4>
+            </section>
+            <section class="secFormRow">
+                <section class="secFormColLeft4555">
+                    <label id="lblLastName">Last Name: </label>
+                </section>
+                <section class="secFormColRight4555">        
+                    <input class="inputField" id="svsefLastName" type="text" pattern=".*" title="Enter a Last Name" onblur="funcOnBlurCheckValidity(svsefLastName,false)" size=30 name="svsefLastName" />
+                    <label class="redFont" id="errorLastName" hidden>&nbsp;Please enter an Organization Name or Last Name</label>
+                </section>
+            </section>
+            <section class="secFormRow">
+                <section class="secFormColLeft4555">
+                    <label id="lblFirstName">First Name: </label>
+                </section>
+                <section class="secFormColRight4555">
+                    <input class="inputField" id="svsefFirstName" type="text" title="Enter a First Name" onblur="funcOnBlurCheckValidity(svsefFirstName,true)" size=30 name="svsefFirstName" />
+                </section>
+            </section>
+            <section class="secFormRow">
+                <section class="secFormColLeft4555">
+                    <label>Mailing Address: </label>
+                </section>
+                <section class="secFormColRight4555">
+                    <input class="inputField" id="svsefMailingAddress" type="text" pattern=".*" title="Enter a valid Mailing Address" onblur="funcOnBlurCheckValidity(svsefMailingAddress,false)" size=30 name="svsefMailingAddress" />
+                    <label class="redFont" id="errorMailingAddress" hidden>&nbsp;Please enter a Mailing Address</label>
+                </section>
+            </section>
+            <section class="secFormRow">
+                <section class="secFormColLeft4555">
+                    <label>Mailing Address2: </label>
+                </section>
+                <section class="secFormColRight4555">
+                    <input class="inputField" id="svsefMailingAddress2" type="text" onblur="funcOnBlurCheckValidity(svsefMailingAddress2,true)" size=30 name="svsefMailingAddress2" />
+                </section>
+            </section>
+            <section class="secFormRow">
+                <section class="secFormColLeft4555">
+                    <label>City: </label>
+                </section>
+                <section class="secFormColRight4555">
+                    <input class="inputField" id="svsefCity" type="text" pattern=".*" title="Enter a valid City" onblur="funcOnBlurCheckValidity(svsefCity,false)" size=30 name="svsefCity" />
+                    <label class="redFont" id="errorCity" hidden>&nbsp;Please enter a City</label>
+                </section>
+            </section>
+            <section class="secFormRow">
+                <section class="secFormColLeft4555">
+                    <label>State: </label>
+                </section>
+                <section class="secFormColRight4555">
+                    <select class="inputField" id="svsefState" onblur="funcOnBlurCheckValidity(svsefState,false)" width=50 size=1 name="svsefState">
+                        <optgroup label="Select State" >
+                        <option value="" disabled="true" selected="selected" name="svsefState"></option>
+                        <option value="AL" name="svsefState">Alabama</option>
+                        <option value="AK" name="svsefState">Alaska</option>
+                        <option value="AZ" name="svsefState">Arizona</option>
+                        <option value="AR" name="svsefState">Arkansas</option>
+                        <option value="CA" name="svsefState">California</option>
+                        <option value="CO" name="svsefState">Colorado</option>
+                        <option value="CT" name="svsefState">Connecticut</option>
+                        <option value="DE" name="svsefState">Delaware</option>
+                        <option value="FL" name="svsefState">Florida</option>
+                        <option value="GA" name="svsefState">Georgia</option>
+                        <option value="HI" name="svsefState">Hawaii</option>
+                        <option value="ID" name="svsefState">Idaho</option>
+                        <option value="IL" name="svsefState">Illinois</option>
+                        <option value="IN" name="svsefState">Indiana</option>
+                        <option value="IA" name="svsefState">Iowa</option>
+                        <option value="KS" name="svsefState">Kansas</option>
+                        <option value="KY" name="svsefState">Kentucky</option>
+                        <option value="LA" name="svsefState">Louisiana</option>
+                        <option value="ME" name="svsefState">Maine</option>
+                        <option value="MD" name="svsefState">Maryland</option>
+                        <option value="MA" name="svsefState">Massachusetts</option>
+                        <option value="MI" name="svsefState">Michigan</option>
+                        <option value="MN" name="svsefState">Minnesota</option>
+                        <option value="MS" name="svsefState">Mississippi</option>
+                        <option value="MO" name="svsefState">Missouri</option>
+                        <option value="MT" name="svsefState">Montana</option>
+                        <option value="NE" name="svsefState">Nebraska</option>
+                        <option value="NV" name="svsefState">Nevada</option>
+                        <option value="NH" name="svsefState">New Hampshire</option>
+                        <option value="NJ" name="svsefState">New Jersey</option>
+                        <option value="NM" name="svsefState">New Mexico</option>
+                        <option value="NY" name="svsefState">New York</option>
+                        <option value="NC" name="svsefState">North Carolina</option>
+                        <option value="ND" name="svsefState">North Dakota</option>
+                        <option value="OH" name="svsefState">Ohio</option>
+                        <option value="OK" name="svsefState">Oklahoma</option>
+                        <option value="OR" name="svsefState">Oregon</option>
+                        <option value="PA" name="svsefState">Pennsylvania</option>
+                        <option value="RI" name="svsefState">Rhode Island</option>
+                        <option value="SC" name="svsefState">South Carolina</option>
+                        <option value="SD" name="svsefState">South Dakota</option>
+                        <option value="TN" name="svsefState">Tennessee</option>
+                        <option value="TX" name="svsefState">Texas</option>
+                        <option value="UT" name="svsefState">Utah</option>
+                        <option value="VT" name="svsefState">Vermont</option>
+                        <option value="VA" name="svsefState">Virginia</option>
+                        <option value="WA" name="svsefState">Washington</option>
+                        <option value="WV" name="svsefState">West Virginia</option>
+                        <option value="WI" name="svsefState">Wisconsin</option>
+                        <option value="WY" name="svsefState">Wyoming</option>
+                        </optgroup>
+                    </select>
+                    <label class="redFont" id="errorState" hidden>&nbsp;Please select a State</label>
+                </section>
+            </section>
+            <section class="secFormRow">
+                <section class="secFormColLeft4555">
+                    <label>Zip: </label>
+                </section>
+                <section class="secFormColRight4555">
+                    <input class="inputField" id="svsefZip" type="text" pattern="\d{5}(-\d{4})?" title="5 digit zip {- w/ optional 4 digits}" placeholder="_____-____" onblur="funcOnBlurCheckValidity(svsefZip,false)" size=30 name="svsefZip" />
+                    <label class="redFont" id="errorZip" hidden>&nbsp;Please enter a valid Zip Code</label>
+                </section>
+            </section>
+            <br/>
+            <section class="secFormRow">
+                <section class="secSingleCol">
+                    <button class="styleBtn" type="button" onclick="funcCheckPaymentFormValidity()">Continue</button>
+                </section>
+            </section>
+            <br/>
+        </fieldset>
+    </form>
+
+<!-- END OF PAYMENT INFO FORM -->
+<!-- START OF REVIEW/SUBIT FORM -->
+    <form id="infoReviewForm">
+        <fieldset  id="infoReviewFields" class="entryFields fieldsOnLoad" >
+            <section class="secSingleCol">
+                <h4 id="lblReviewMsg">Review Game Dinner Tickets</h4>
+            </section>
+            <section class="secSingleCol">
+                <label id="lblReview">Please review the details of your order&nbsp;&nbsp;&nbsp;<button class="styleBtnHelpSm" type="button" onclick="funcOnLoadMenuCanvas(0)">Modify</button></label>
+            </section>
+            <table id="tblReviewFields">
+            </table>
+            <br/>
+            <section class="secSingleCol">
+                <h4 id="lblThankYou1" hidden>Thank You!</h4>
+                <h4 id="lblThankYou2" hidden></h4>
+            </section>
+            <br/>
+            <section class="secSingleCol">
+                <h4 id="lblReviewDinnerTableInfo" hidden>Dinner Table Information</h4>
+            </section>
+            <section class="secSingleCol">
+                <label id="lblReviewTixGuests" hidden><b>List people receiving a dinner ticket.</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button class="styleBtnHelpSm" type="button" onclick="funcOnLoadMenuCanvas(0, 'sectionGuestList')">Modify</button></label>
+            </section>
+            <table id="tblReviewTixGuests">
+            </table>
+            <section class="secSingleCol">
+                <label id="lblSeatOption" hidden></label>
+            </section>
+            <section class="secSingleCol">
+                <label id="lblReviewSPGuests" hidden><b>List guests for sponsored table.</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button class="styleBtnHelpSm" type="button" onclick="funcOnLoadMenuCanvas(0, 'sectionSponsorshipGuests')">Modify</button></label>
+            </section>
+            <table id="tblReviewSPGuests">
+            </table>
+            <br/>
+            <section class="secSingleCol">
+                <h4 id="lblPayment" hidden>Payment Info</h4>
+            </section>
+            <table id="tblPaymentInfo">
+            </table>
+            <br/>
+            <section class="secFormRow">
+                <section class="secSingleCol">
+                    <button id="btnSubmit" class="styleBtn" type="button" onclick="funcSubmitPayment()">Submit</button>
+                    <button id="btnReset" class="styleBtn" type="button" onclick="funcReset(true)" hidden>Reset</button>
+                </section>
+            </section>
+            <br/>
+        </fieldset>
+    </form>
+<!-- END OF REVIEW/SUBIT FORM --> 
+<!-- COMMUNICATION W SAFESAVE -->
+    <form id="regPGForm" action="RegPG_Submit.php" method="post" enctype="multipart/form-data" target="regPG_SubmitTarget" onsubmit="funcRegPG_OnSubmit()">
+        <fieldset  id="regPGFields" class="entryFields fieldsOnLoad" >
+            <section>
+                <table>
+                    <tr>
+                        <td>Customer Vault ID:  <input type="text" id="customerVaultId" name="customerVaultId" value=""/></td>
+                    </tr>
+                    <tr>
+                        <td>SVSEF ID:           <input type="text" id="customerSvsefID" name="customerSvsefID" value=""/></td>
+                    </tr>
+                     <tr>
+                        <td>Transaction Type:   <input type="text" id="typeTransaction" name="typeTransaction" value="sale"/></td> <!-- typeTransaction == sale, add-customer -->
+                    </tr>
+                    <tr>
+                        <td>Total Amount:       <input type="text" id="invoiceTotal" name="invoiceTotal" value="1.00"/></td>
+                    </tr>
+                    <tr>
+                        <td>First Name:         <input type="text" id="customerBillingFirstName" name="customerBillingFirstName" value=""/></td>
+                    </tr>
+                    <tr>
+                        <td>Last Name:          <input type="text" id="customerBillingLastName" name="customerBillingLastName" value=""/></td>
+                    </tr>
+                    <tr>
+                        <td>Address1:           <input type="text" id="customerBillingAddress1" name="customerBillingAddress1" value=""/></td>
+                    </tr>
+                    <tr>
+                        <td>City:               <input type="text" id="customerBillingCity" name="customerBillingCity" value=""/></td>
+                    </tr>
+                    <tr>
+                        <td>State:              <input type="text" id="customerBillingState" name="customerBillingState" value=""/></td>
+                    </tr>
+                    <tr>
+                        <td>Zip:                <input type="text" id="customerBillingZip" name="customerBillingZip" value=""/></td>
+                    </tr>
+                    <tr>
+                        <td>Email Address:      <input type="text" id="customerBillingEmail" name="customerBillingEmail" value=""></td>
+                    </tr>
+                </table> 
+                <br/>
+                <input id="regSubmitBtn" class="styleBtn" type="submit" name="regSubmitBtn" value="Submit" form="regPGForm" />
+            </section>
+        </fieldset>
+    </form>
+    <iframe id="regPG_SubmitTarget" name="regPG_SubmitTarget" src="RegSubmitTarget.html" style="width:0;height:0;border:0px solid #fff;"></iframe>
+    <!--<iframe id="regPG_GetTokenTarget" name="regPG_GetTokenTarget" src="RegPG_GetToken.php" style="width:500;height:100;border:0px solid #fff;"></iframe>-->
+    <!--hr/-->
+    <form id="regCCForm" action="" method="post" enctype="multipart/form-data" target="regPG_CCTarget" onsubmit="funcRegCC_OnSubmit()" >
+        <fieldset  id="regPGFields" class="entryFields fieldsOnLoad" >
+            <section>
+                <table>
+                    <tr><td>Credit Card Number</td><td><INPUT type ="text" id="billing-cc-number" name="billing-cc-number" value=""> </td></tr>
+                    <tr><td>Expiration Date</td><td><INPUT type ="text" id="billing-cc-exp" name="billing-cc-exp" value=""> </td></tr>
+                    <tr><td>CVV</td><td><INPUT type ="text"  id="cvv" name="cvv" value="" > </td></tr>
+                </table>
+                <br/>
+                <input id="regCCBtn" class="styleBtn" type="submit" name="regCCBtn" value="CC" form="regCCForm" />
+                <br/><br/>
+                <label id="msgCCResult"></label>
+            </section>
+        </fieldset>
+    </form>
+    <iframe id="regPG_CCTarget" name="regPG_CCTarget" src="RegPG_GetToken.php" style="width:0;height:0;border:0px solid #fff;"></iframe>
+
+    <form id="regLUpForm" action="RegPG_Lookup.php" method="post" enctype="multipart/form-data" target="regPG_LookupTarget" onsubmit="funcRegLookup_OnSubmit()" >
+        <fieldset  id="regPGFields" class="entryFields fieldsOnLoad" >
+            <section>
+                <table>
+                    <tr><td>Last Name</td><td><INPUT type ="text" id="lookuplastname" name="lookuplastname" value=""> </td></tr>
+                    <tr><td>CC</td><td><INPUT type ="text" id="lookupcc" name="lookupcc" value=""> </td></tr>
+                </table>
+                <br/>
+                <input id="regLUPBtn" class="styleBtn" type="submit" name="regLUPBtn" value="Submit" form="regLUpForm" />
+                <br/><br/>
+                <label id="msgLUPResult"></label>
+            </section>
+        </fieldset>
+    </form>
+    <iframe id="regPG_LookupTarget" name="regPG_LookupTarget" src="RegLookupTarget.html" style="width:0;height:0;border:0px solid #fff;"></iframe>
+<!-- END OF COMMUNICATION W SAFESAVE -->
+    <br/>
+    <br/>
+    <footer id="footerForm"> 
+        <fieldset class="footerFieldSet">
+            <section class="secFormRow">
+                <label class="labelDescriptions"><font size="5cm">STRONG MINDS • STRONG BODIES • STRONG FUTURES</font></label> 
+            </section>
+            <hr/>
+            <br/> 
+            <section class="secFormRow">
+                <label class="contactInfo">For questions or more information, please contact:</label>
+            </section>
+            <section class="secFormRow">
+                <label class="contactInfo">Jody Zarkos, Director of Events & Community Relations</label>
+            </section>
+            <section class="secFormRow">
+                <label class="contactInfo">(208) 726-4129 • jody@svsef.org</label>
+            </section>
+        </fieldset>
+    </footer>
+
+    <script type="text/javascript" src="js/Registration-ModalDlgs.js"></script>
+    <script language="javascript" type="text/javascript">
+
+        window.addEventListener("resize", function(event){
+            funcSetIFrameHeight("iFrameConstituentForm");
+            funcSetIFrameWidth("iFrameConstituentForm");
+        });
+
+    </script>
+</body>
+</html>

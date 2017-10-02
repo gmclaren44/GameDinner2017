@@ -1,0 +1,911 @@
+header.headerForm {
+    width:100%;
+    text-align: center; 
+    font-family: "Franklin Gothic Light","Franklin Gothic","ITC Franklin Gothic";
+    /*font-weight: bold;*/
+    border: thin;
+}
+
+img.imgResponsive {
+    height: 350px;
+    width: 475px;
+} 
+
+img.imgCC {
+    height: 45px;
+    width: 70px;
+} 
+
+img.imgGuest {
+    height: 13px;
+    width: 13px;
+} 
+
+img.imgGuest:hover {
+    content: url('http://dummyimage.com/100x100/eb00eb/fff');
+}
+
+a.imgGuest img:last-child {
+  display: none;  
+}
+a.imgGuest:hover img:last-child {
+  display: block;  
+}
+a.imgGuest:hover img:first-child {
+  display: none;  
+}
+
+section.secParenth4 {
+    display: flex;
+    width:100%;
+    text-align: center;
+    padding-left: 30%;
+}
+
+.imgh4 {
+    height: 50px;
+    width: 50px;
+    padding-left: 10%;
+}
+
+.imgh4search {
+    height: 50px;
+    width: 50px;
+    padding-left: 5%;
+}
+
+.imgCaution {
+    height: 30px;
+    width: 30px;
+}
+
+.imgCVVHelp {
+    height: 230px;
+    width: 200px;
+    text-align: center;
+}
+
+fieldset.msgTY {
+    font-family: "Franklin Gothic Medium","Franklin Gothic","ITC Franklin Gothic",Arial,sans-serif;
+    text-align: center;
+    border: thin;
+    padding: 10px 1px 20px 1px;
+}
+
+footer label.contactInfo {
+    width: 100%;
+    text-align: center;
+}
+
+section.secFormRow {
+    display: flex;
+    width:100%;
+    text-align: center;
+}
+
+section.secFormRowHidden {
+    display: none;
+    width:100%;
+    text-align: center;
+}
+
+section.secSingleCol {
+    flex: 1;
+    padding: 5px 3px 5px 3px;
+    text-align: center;
+}
+
+section.secSingleColWMargins {
+    flex: 1;
+    padding: 5px 3px 5px 3px;
+    margin-left: 30%;
+    margin-right: 30%;
+    text-align: center;
+}
+
+section.secSingleColHeadingLeft {
+    flex: 1;
+    padding: 5px 3px 15px 3px;
+    margin-left: 30%;
+    margin-right: 30%;
+    text-align: left;
+}
+
+section.secFormColLeft4060 {
+    flex-basis: 40%;
+    padding: 5px 3px 5px 20px;
+    text-align: right;
+}
+section.secFormColRight4060 {
+    flex-basis: 60%;
+    padding: 5px 20px 5px 3px;
+    text-align: left;
+}
+
+section.secFormColLeft4555 {
+    flex-basis: 45%;
+    padding: 5px 3px 5px 20px;
+    text-align: right;
+}
+section.secFormColRight4555 {
+    flex-basis: 55%;
+    padding: 5px 20px 5px 3px;
+    text-align: left;
+}
+
+section.secFormColLeft6040 {
+    flex-basis: 60%;
+    padding: 5px 3px 5px 20px;
+    text-align: left;
+}
+section.secFormColRight6040 {
+    flex-basis: 40%;
+    padding: 5px 20px 5px 3px;
+    text-align: left;
+}
+
+section.secFormColLeft3070 {
+    flex-basis: 30%;
+    padding: 5px 3px 5px 20px;
+    text-align: right;
+}
+section.secFormColRight3070 {
+    flex-basis: 70%;
+    padding: 5px 20px 5px 3px;
+    text-align: left;
+}
+
+section.secFormColLeft {
+    flex: 1;
+    padding: 5px 3px 5px 20px;
+    text-align: right;
+}
+section.secFormColRight {
+    flex: 1;
+    padding: 5px 20px 5px 3px;
+    text-align: left;
+}
+
+/* Classes for PRINT fields */
+section.secPrintEntryField {
+    flex: 1;
+    margin: 3px 3px 3px 3px;
+    padding: 0px 3px 10px 3px;
+    text-align: left;
+    border-style: solid;
+    border-width: thin;
+    border-color: grey;
+    font-size: 10pt;
+}
+section.secPrintEntryFieldLrg {
+    flex: 1;
+    margin: 3px 40px 3px 40px;
+    padding: 0px 3px 50px 3px;
+    text-align: left;
+    border-style: solid;
+    border-width: thin;
+    border-color: grey;
+    font-size: 10pt;
+}
+section.secPrintEntryField5545 {
+    flex-basis: 55%;
+    margin: 3px 3px 3px 3px;
+    padding: 0px 3px 10px 3px;
+    text-align: left;
+    border-style: solid;
+    border-width: thin;
+    border-color: grey;
+    font-size: 10pt;
+}
+section.secPrintSingleCol {
+    flex: 1;
+    margin: 3px 3px 3px 25px;
+    text-align: left;
+    font-size: 10pt;
+}
+
+
+section.secFormColRight-Btn {
+    flex: 1;
+    padding: 5px 20px 5px 3px;
+    text-align: center;
+    vertical-align: center;
+
+}
+
+section.secFormColLeftx3 {
+    flex: 1;
+    padding: 5px 3px 5px 20px;
+    text-align: right;
+}
+
+section.secFormColMidx3 {
+    flex: 1;
+    padding: 5px 3px 5px 50px;
+    text-align: left;
+}
+
+section.secFormColRightx3 {
+    flex: 1;
+    padding: 5px 20px 5px 3px;
+    text-align: left;
+}
+
+section.secFormColLeftx3for20 {
+    flex-basis: 20%;
+    padding: 5px 3px 5px 3px;
+    text-align: right;
+}
+
+section.secFormColMidx3for60 {
+    flex-basis: 60%;
+    padding: 5px 3px 5px 3px;
+    text-align: center;
+}
+
+section.secFormColRightx3for20 {
+    flex-basis: 20%;
+    padding: 5px 3px 5px 3px;
+    text-align: left;
+}
+
+section.secFormColLeftx4 {
+    flex-basis: 27%;
+    padding: 3px 3px 3px 3px;
+    text-align: right;
+}
+
+section.secPrintFormColMidLeftx4 {
+    flex-basis: 23%;
+    padding: 3px 3px 3px 3px;
+    text-align: left;
+    border-style: solid;
+    border-color: black;
+}
+section.secPrintFormColMidRightx4 {
+    flex-basis: 27%;
+    padding: 3px 3px 3px 3px;
+    text-align: right;
+}
+section.secFormColRightx4 {
+    flex-basis: 23%;
+    padding: 3px 3px 3px 3px;
+    text-align: left;
+}
+
+
+fieldset.fieldsOnLoad {
+    display: none;
+    width: 100%;
+}
+
+fieldset.entryFields {
+    font-family: "Franklin Gothic Medium","Franklin Gothic","ITC Franklin Gothic",Arial,sans-serif;
+    text-align: center;
+    border: thin;
+    box-shadow: -1px -1px 6px #888888;
+    width: 100%;
+}
+
+ul.searchList {
+    list-style-type: none;
+}
+
+.liMultiSearch {
+    margin: 5px;
+}
+
+.labelHiddenHolder {
+    display: none;
+}
+.labelDescriptions {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+}
+
+.inputField {
+    border: thin;
+    text-align: left;
+}
+
+.tixField {
+    direction: rtl;
+    text-align: right;
+}
+
+hr {
+    border: 0; 
+    height: 1px;
+    width: 50%;
+}
+
+.redOldFont {
+    color: red;
+}
+
+.redFont {
+    color: #C81F12;
+}
+
+.blueFont {
+    color: #6699FF;
+}
+
+.greenFont {
+    color: #649F61;
+}
+
+select  {
+    outline: 0;
+    line-height: 1;
+    outline: 0;
+    text-decoration: none;
+}
+
+button.styleBtn {
+    border-color: #462300;
+    border-width: thin;
+    box-shadow: -1px -1px 6px #888888;
+    height: 30px;
+    width: 100px;
+    font-family: "Franklin Gothic Medium","Franklin Gothic","ITC Franklin Gothic",Arial,sans-serif;
+    font-size: 12pt;
+    background-color: #462300;
+    color: white;
+}
+
+button.styleBtnLong {
+    border-color: #462300;
+    border-width: thin;
+    box-shadow: -1px -1px 6px #888888;
+    height: 30px;
+    width: 125px;
+    font-family: "Franklin Gothic Medium","Franklin Gothic","ITC Franklin Gothic",Arial,sans-serif;
+    font-size: 12pt;
+    background-color: #462300;
+    color: white;
+}
+
+button.styleBtnSmFont {
+    border-color: #462300;
+    border-width: thin;
+    box-shadow: -1px -1px 6px #888888;
+    height: 40px;
+    width: 100px;
+    font-family: "Franklin Gothic Medium","Franklin Gothic","ITC Franklin Gothic",Arial,sans-serif;
+    font-size: 10pt;
+    background-color: #462300;
+    color: white;
+}
+
+button.styleBtnHelp {
+    border-color: #888888;
+    border-width: thin;
+    box-shadow: -1px -1px 6px #888888;
+    height: 20px;
+    width: 100px;
+    font-family: "Franklin Gothic Medium","Franklin Gothic","ITC Franklin Gothic",Arial,sans-serif;
+    font-size: 10pt;
+    background-color: #5A7FA0;
+    color: white;
+}
+
+button.styleBtnHelpSm {
+    border-color: #888888;
+    border-width: thin;
+    box-shadow: -1px -1px 6px #888888;
+    height: 20px;
+    width: 50px;
+    font-family: "Franklin Gothic Medium","Franklin Gothic","ITC Franklin Gothic",Arial,sans-serif;
+    font-size: 10pt;
+    background-color: #5A7FA0;
+    color: white;
+}
+
+button.styleBtnBig {
+    border-color: #462300;
+    border-width: thin;
+    box-shadow: -1px -1px 6px #888888; 
+    height: 45px;
+    width: 95px;
+    font-family: "Franklin Gothic Medium","Franklin Gothic","ITC Franklin Gothic",Arial,sans-serif;
+    font-size: 12pt;
+    background-color: #462300;
+    color: white;
+    margin: 5px;
+}
+
+.dlgTitle .ui-dialog-title {
+    font-family: "Lucida Sans","Lucida Sans Unicode", "Verdana", "sans serif";
+}
+
+.dlgTitle .ui-dialog-content {
+    background:white !important;
+    font-family: "Lucida Sans","Lucida Sans Unicode", "Verdana", "sans serif";
+}
+
+.dlgTitle .ui-dialog-buttonpane {
+    background:white !important;
+}
+
+.dlgNoTitleNClose .ui-dialog-titlebar-close {
+    display: none;
+    background: transparent !important;
+    background-color: transparent !important;
+    border: 0px !important;
+}
+
+.dlgNoTitleNClose .ui-dialog-titlebar {
+    display: none;
+    background: transparent !important;
+    background-color: transparent !important;
+    border: 0px !important;
+}
+
+.dlgNoTitleNClose {
+    background: transparent !important;
+    background-color: transparent !important;
+    border: 0px !important;
+
+}
+
+.dlgNoTitleNClose-dialog .ui-widget-content {
+  border: 0px !important;
+}
+
+/*
+#bodyConstituentForm {
+    width: 97%;
+    height: 97%;
+}
+*/
+
+#searchForm {
+    width: 97%;
+    height: 97%;
+}
+
+#multiSearchForm {
+    width: 97%;
+    height: 97%;
+}
+
+#infoConstituentForm {
+    width: 97%;
+    height: 97%;
+}
+
+#infoGiftForm {
+    width: 97%;
+}
+
+#followUpForm {
+    width: 97%
+}
+
+/*************************************************************/
+/***** Start Registration Form Support ***********************/
+/*************************************************************/
+#infoTixForm, #infoReviewFields {
+    width: 97%
+}
+
+#menuCanvas {
+    background-color: white;
+    width: 100%;
+    height: 50px;
+}
+
+#menuSelectTickets, #menuFindSVSEFID, #menuPaymentInfo, #menuReviewSubmit {
+    font-family: "Lucida Sans","Lucida Sans Unicode", "Verdana", "sans serif";
+    font-size: 14px;
+    font-style: "white";
+    position:relative;
+    top: -50px;
+    text-decoration: none;
+}
+
+#menuSelectTickets:link, #menuFindSVSEFID:link, #menuPaymentInfo:link, #menuReviewSubmit:link {
+    text-decoration: none;
+    color: white;
+}
+#menuSelectTickets:visited, #menuFindSVSEFID:visited, #menuPaymentInfo:visited, #menuReviewSubmit:visited {
+    text-decoration: none;
+    color: white;
+}
+#menuSelectTickets:active, #menuFindSVSEFID:active, #menuPaymentInfo:active, #menuReviewSubmit:active  {
+    text-decoration: none;
+    color: white;
+}
+#menuSelectTickets:hover, #menuFindSVSEFID:hover, #menuPaymentInfo:hover, #menuReviewSubmit:hover {
+    text-decoration: underline;
+    color: white;
+}
+
+section.secMenuRow {
+    display: flex;
+    width:100%;
+    text-align: center;
+}
+
+section.secMenuColx4 {
+    flex-basis: 25%;
+    text-align: center;
+}
+
+#tblReviewFields {
+    width: 100%;
+}
+
+#tblReviewTixGuests {
+    width: 100%;
+    padding-left: 30%;
+    padding-right: 30%;
+}
+
+#tblReviewSPGuests {
+    width: 100%;
+    padding-left: 30%;
+    padding-right: 30%;
+}
+
+.tdReviewGuestLabel {
+    text-align: left;
+    padding-left: 40px;
+}
+
+.tdReviewGuestFields {
+    text-align: left;
+    padding-left: 40px;
+}
+
+#tblPaymentInfo {
+    width: 100%;
+}
+
+.tdReviewFieldsLeft {
+    width: 25%;
+    text-align: right;
+    padding-right: 20px;
+}
+
+.tdReviewFieldsMiddle {
+    width: 50%;
+    text-align: left;
+    padding-left: 20px;
+}
+
+.tdReviewFieldsRight {
+    width: 25%;
+    text-align: right;
+    padding-right: 15%;
+}
+
+.tdReviewBillingHeader {
+    width: 100%;
+    text-align: center;
+}
+
+.tdReviewBillingMiddle {
+    width: 37%;
+    text-align: left;
+    padding-left: 20px;
+}
+
+.tdReviewBillingRight {
+    width: 38%;
+    text-align: left;
+    padding-left: 20px;
+}
+
+.tdReviewFieldsTotal {
+    width: 50%;
+    text-align: right;
+    border: solid 0px;
+    border-top-width: 2px;
+}
+
+.tdReviewFieldsTotalRight {
+    width: 25%;
+    text-align: right;
+    padding-right: 15%;
+    border: solid 0px;
+    border-top-width: 2px;
+}
+
+.tblReg {
+    width: 100%;
+    padding-left: 30%;
+    padding-right: 30%;
+}
+
+.tdRegLabel {
+    padding-bottom: 10px;
+    text-align: left;
+}
+
+.tdRegInput {
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.tdAlignLeft {
+    text-align: left;
+}
+
+.tdRegSubLabel {
+    padding-left: 20px;
+    text-align: left;
+    font-size: 10pt;
+}
+
+.tblGuestLists {
+    width: 100%;
+    padding-left: 30%;
+    padding-right: 30%;
+}
+
+.tdGuestsLabel {
+    width: 25%;
+    text-align: center;
+    font-size: 10pt;
+}
+
+.tdGuests {
+    width: 25%;
+    text-align: left;
+    padding-left: 20px;
+    font-size: 10pt;
+}
+
+
+.flexwidth {
+    width: 100%;
+}
+
+.flexwidth50 {
+    width: 50%;
+}
+
+
+
+/*************************************************************/
+/***** End Registration Form Support *************************/
+/*************************************************************/
+
+
+
+
+/* NOT PRINTING - ADD COLOR */
+@media not print {
+
+    header.headerForm {
+        background-color: #462300; 
+        border-color: #462300;
+        box-shadow: -1px -1px 6px #888888;
+        color: white;
+    }
+    #fontHeader1 {
+        font-family: "Lucida Sans","Lucida Sans Unicode", "Verdana", "sans serif";
+        font-size: 30px;
+    }
+    #fontHeader2 {
+        font-family: "Lucida Sans","Lucida Sans Unicode", "Verdana", "sans serif";
+        font-size: 25px;
+    }
+
+    #footerForm {
+        font-family: "Lucida Sans","Lucida Sans Unicode", "Verdana", "sans serif";
+        background-color:#462300;
+        color: white; 
+        border-color: #462300;
+        box-shadow: -1px -1px 6px #888888;
+    }
+
+    fieldset.msgTY {
+        background-color: #F7F7F7;
+        border-color: #FEF1B8;
+        box-shadow: -1px -1px 6px #888888;
+    }
+
+    footer label.contactInfo {
+        color: white;
+    }
+
+    fieldset.entryFields {
+        background-color: #F7F7F7;
+        border-color: #FEF1B8;
+        box-shadow: -1px -1px 6px #888888;
+        color: #534F4F;
+    }
+
+    .inputField {
+        border-color: #909090;
+        box-shadow: -1px -1px 6px #888888;
+    }
+
+    hr {
+        background: #462300;
+        box-shadow: -1px -1px 6px #888888;
+    }
+
+    select  {
+        outline-color: #909090;
+        border: 1px solid #909090;
+        border-color: #909090;
+    }
+
+    figure.headerImage {
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+
+}
+
+/* PRINTING - MAKE JUST A FORM */
+@media only print {
+
+    #printForm {
+        display: block;
+    }
+    #fontHeader1 {
+    font-size: 15px;
+    }
+    #fontHeader2 {
+        font-size: 15px;
+    }
+    #searchForm {
+        display: none;
+    }
+    #multiSearchForm {
+        display: none;
+    }
+    #infoConstituentForm {
+        display: none;
+    } 
+    #infoGiftForm {
+        display: none;
+    }
+    #footerForm {
+        display: none;
+    }
+    #btnPrintThankYou {
+        display: none;
+    }
+    #btnAddGift2 {
+        display: none;
+    }
+    #lblAddGift2 {
+        display: none;
+    }
+
+    img.imgResponsive {
+        height: 110px;
+        width: 150px;
+    } 
+
+/* Some Examples of what to change when printing
+header {
+        padding: 0px;
+    }
+    header > h1 {
+        font-size: 2em;
+    }
+    header > h2 {
+        display: none;
+    }
+    main > article {
+        box-shadow: none;
+    }
+    */
+}
+
+@media only screen {
+
+    fieldset.footerFieldSet {
+        width:100%;
+        text-align: center; 
+        border: thin;
+        padding: 10px 1px 20px 1px;
+        background-color:#462300;
+        color: white; 
+        border-color: #462300;
+        box-shadow: -1px -1px 6px #888888;
+        display: block;
+    }
+}
+
+@media only screen and (max-width: 700px) {
+    section.secFormRow {
+        display: block;
+    }
+
+    section.secParenth4 {
+        display: block;
+        padding-left: 0;
+    }
+
+    .imgh4 {
+        padding-left: 0;
+    }
+
+    section.secFormColLeft {
+        text-align: center;
+        padding: 5px 3px 5px 3px;
+    }
+
+    section.secFormColRight {
+        text-align: center;
+        padding: 5px 3px 5px 3px;
+    }
+
+    table#tblBtns {
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    section.secFormColRight-Btn {
+        text-align: center;
+        padding: 5px 3px 5px 3px;
+    }
+
+    img.imgResponsive {
+        height: 220px;
+        width: 300px;
+    } 
+
+    button.styleBtn {
+        height: 40px;
+        font-size: 10pt;
+    }
+
+    button.styleBtnBig {
+        font-size: 10pt;
+        /*display: block;
+        text-align: center;*/
+    }
+
+    section.secFormColLeft4060 {
+        padding: 5px 3px 5px 3px;
+        text-align: center;
+    }
+
+    section.secFormColRight4060 {
+        padding: 5px 3px 5px 3px;
+        text-align: center;
+    }
+
+    #searchForm {
+        width: 90%;
+    }
+
+    #multiSearchForm {
+        width: 90%;
+    }
+
+    #infoConstituentForm {
+        width: 90%;
+    }
+
+    #infoGiftForm {
+        width: 90%;
+    }
+
+    #followUpForm {
+        width: 90%
+    }
+
+    #infoTixForm {
+        width: 90%
+    }
+
+    #menuSelectTickets, #menuFindSVSEFID, #menuPaymentInfo, #menuReviewSubmit {
+        font-size: 12px;
+    }
+
+    .trDisplay {
+        display: flex;
+    }
+}
